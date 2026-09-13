@@ -11,7 +11,7 @@ h1, h2, h3 {
     color: #1a365d;
 }
 
-/* --- Navigation Bar --- */
+
 #main-header {
     background-color: rgba(10, 25, 47, 0.95);
     padding: 15px 0;
@@ -36,7 +36,6 @@ h1, h2, h3 {
     text-decoration: underline;
 }
 
-/* --- Main Container & Cards --- */
 .container {
     max-width: 900px;
     margin: 30px auto;
@@ -75,9 +74,7 @@ footer p {
     padding: 20px 0;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
 }
-/* =========================
-   TRAINERS
-========================= */
+
 
 .trainer-grid {
     display: grid;
@@ -123,9 +120,7 @@ footer p {
 }
 
 
-/* =========================
-   ABOUT THE TEAM MEMBERS
-========================= */
+
 
 #about-team {
     margin-top: 50px;
@@ -159,9 +154,7 @@ footer p {
 }
 
 
-/* =========================
-   PRICING
-========================= */
+
 
 .pricing-table {
     width: 100%;
@@ -189,9 +182,6 @@ footer p {
 }
 
 
-/* =========================
-   EXTRA BENEFITS
-========================= */
 
 .bonus-section {
     margin-top: 45px;
@@ -231,9 +221,7 @@ footer p {
 }
 
 
-/* =========================
-   RESPONSIVE
-========================= */
+
 
 @media (max-width: 900px) {
 
@@ -273,9 +261,7 @@ footer p {
 
 }
 
-/* =========================
-   SCHEDULE
-========================= */
+
 
 .schedule-table {
     width: 100%;
@@ -306,9 +292,7 @@ footer p {
     color: #1a365d;
 }
 
-/* =========================
-   CONTACT
-========================= */
+
 
 .contact-section {
     display: grid;
@@ -394,9 +378,6 @@ footer p {
 }
 
 
-/* =========================
-   CONTACT RESPONSIVE
-========================= */
 
 @media (max-width: 700px) {
 
