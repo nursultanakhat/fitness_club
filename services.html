@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Services — Atlas Fitness Club</title>
+
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
+<div class="page-layout">
+
+    <!-- HEADER -->
     <header id="main-header">
+
         <div class="logo">
-            <a href="index.html" style="color: white; text-decoration: none; font-weight: bold; font-size: 1.2rem;">Atlas Fitness</a>
+            <a href="index.html"
+               style="color: white; text-decoration: none; font-weight: bold; font-size: 1.2rem;">
+                Atlas Fitness
+            </a>
         </div>
+
         <nav class="nav-menu">
             <a href="index.html">Home</a>
             <a href="services.html">Services</a>
@@ -20,45 +32,238 @@
             <a href="schedule.html">Schedule</a>
             <a href="contact.html">Contact</a>
         </nav>
+
     </header>
 
-    <main class="container">
-        <h1>Our Services</h1>
-        <p>Choose the direction that fits you best:</p>
 
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <h2>Quick Info</h2>
+
+        <div class="sidebar-item">
+            <h3>Working Hours</h3>
+            <p>Mon - Sat</p>
+            <p>08:00 - 22:00</p>
+        </div>
+
+        <div class="sidebar-item">
+            <h3>Location</h3>
+            <p>Astana, Kazakhstan</p>
+        </div>
+
+        <div class="sidebar-item">
+            <h3>Contact</h3>
+            <p>+7 700 123 45 67</p>
+            <p>info@atlasfitness.kz</p>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+
+        <h1>Our Services</h1>
+
+        <p>
+            Choose the direction that fits you best:
+        </p>
+
+
+        <!-- SERVICE CARDS -->
         <div class="services-grid">
+
             <div class="service-card">
+
                 <h3>Gym Area</h3>
-                <p>Spacious zone with heavy-duty weight machines and free weights.</p>
-                <img src="images/gym-zone.jpg" alt="Gym training zone" class="service-img">
+
+                <p>
+                    Spacious zone with heavy-duty weight machines
+                    and free weights.
+                </p>
+
+                <img
+                    src="images/gym-zone.jpg"
+                    alt="Gym training zone"
+                    class="service-img"
+                >
+
             </div>
 
+
             <div class="service-card">
+
                 <h3>Group Programs</h3>
-                <p>Join our dynamic group sessions led by expert instructors.</p>
+
+                <p>
+                    Join our dynamic group sessions led by
+                    expert instructors.
+                </p>
+
                 <ul class="highlight-list">
                     <li>🧘 Yoga and Stretching</li>
                     <li>💪 CrossFit</li>
                     <li>⚡ Pilates</li>
                 </ul>
+
             </div>
+
 
             <div class="service-card">
+
                 <h3>Personal Training</h3>
-                <p>One-on-one coaching customized strictly to your individual fitness goals.</p>
-                <img src="images/trainer66.jpg" alt="Personal training" class="service-img">
+
+                <p>
+                    One-on-one coaching customized strictly to
+                    your individual fitness goals.
+                </p>
+
+                <img
+                    src="images/trainer66.jpg"
+                    alt="Personal training"
+                    class="service-img"
+                >
+
             </div>
+
         </div>
 
-        <section id="about-team">
-            <h2>About the Team Members</h2>
-            <p>This page and project were developed by our dedicated student team to master HTML and CSS basics.</p>
+
+        <!-- FITNESS GALLERY -->
+        <section class="gallery-section">
+
+            <h2>Our Fitness Gallery</h2>
+
+            <p>
+                Explore our training areas and fitness activities.
+            </p>
+
+
+            <div class="gallery">
+
+                <!-- 1. Boxing -->
+                <div class="gallery-item">
+
+                    <img
+                        src="images/boxing.jpg"
+                        alt="Boxing Training"
+                    >
+
+                    <div class="gallery-caption">
+                        Boxing Training
+                    </div>
+
+                </div>
+
+
+                <!-- 2. Cardio -->
+                <div class="gallery-item">
+
+                    <img
+                        src="images/cardio.jpg"
+                        alt="Cardio Training"
+                    >
+
+                    <div class="gallery-caption">
+                        Cardio Training
+                    </div>
+
+                </div>
+
+
+                <!-- 3. Weightlifting -->
+                <div class="gallery-item">
+
+                    <img
+                        src="images/weightlifting.jpg"
+                        alt="Weightlifting"
+                    >
+
+                    <div class="gallery-caption">
+                        Weightlifting
+                    </div>
+
+                </div>
+
+
+                <!-- 4. Yoga -->
+                <div class="gallery-item">
+
+                    <img
+                        src="images/yoga.jpg"
+                        alt="Yoga Training"
+                    >
+
+                    <div class="gallery-caption">
+                        Yoga & Stretching
+                    </div>
+
+                </div>
+
+
+                <!-- 5. CrossFit -->
+                <div class="gallery-item">
+
+                    <img
+                        src="images/crossfit.jpg"
+                        alt="CrossFit Training"
+                    >
+
+                    <div class="gallery-caption">
+                        CrossFit
+                    </div>
+
+                </div>
+
+
+                <!-- 6. Strength Training -->
+                <div class="gallery-item">
+
+                    <img
+                        src="images/strength.jpg"
+                        alt="Strength Training"
+                    >
+
+                    <div class="gallery-caption">
+                        Strength Training
+                    </div>
+
+                </div>
+
+            </div>
+
         </section>
+
+
+        <!-- ABOUT TEAM -->
+        <section id="about-team">
+
+            <h2>About the Team Members</h2>
+
+            <p>
+                This page and project were developed by our dedicated
+                student team to master HTML and CSS basics.
+            </p>
+
+        </section>
+
     </main>
 
+
+    <!-- FOOTER -->
     <footer>
-        <p>Development Team: Nursultan Akhat, Abdugani Nagashbay, Tanat Azamat</p>
+
+        <p>
+            Development Team:
+            Nursultan Akhat,
+            Abdugani Nagashbay,
+            Tanat Azamat
+        </p>
+
     </footer>
+
+</div>
 
 </body>
 </html>

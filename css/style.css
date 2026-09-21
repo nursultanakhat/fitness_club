@@ -495,6 +495,234 @@ footer p {
     color: #1a365d;
 }
 
+/* ========================================
+   GRID PAGE LAYOUT
+   ======================================== */
+
+.page-layout {
+    display: grid;
+
+    grid-template-columns: 220px 1fr;
+
+    grid-template-rows: auto 1fr auto;
+
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+
+    min-height: 100vh;
+}
+
+
+/* Header */
+.page-layout #main-header {
+    grid-area: header;
+}
+
+
+/* Sidebar */
+.sidebar {
+    grid-area: sidebar;
+
+    background: #0a192f;
+    color: white;
+
+    padding: 25px 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.sidebar h2 {
+    color: white;
+    margin-top: 0;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+
+    padding: 10px;
+
+    border-radius: 6px;
+
+    transition: 0.3s ease;
+}
+
+.sidebar a:hover {
+    background: #3182ce;
+}
+
+.sidebar-info {
+    margin-top: 25px;
+
+    padding: 15px;
+
+    background: rgba(255, 255, 255, 0.1);
+
+    border-radius: 8px;
+}
+
+.sidebar-info h3 {
+    color: white;
+    margin-top: 0;
+}
+
+
+/* Main */
+.page-layout .container {
+    grid-area: main;
+
+    width: auto;
+    margin: 30px;
+}
+
+
+/* Footer */
+.page-layout footer {
+    grid-area: footer;
+
+    background: #0a192f;
+
+    padding: 10px 20px;
+}
+
+
+/* Responsive Grid */
+@media (max-width: 800px) {
+
+    .page-layout {
+        grid-template-columns: 1fr;
+
+        grid-template-rows: auto auto 1fr auto;
+
+        grid-template-areas:
+            "header"
+            "sidebar"
+            "main"
+            "footer";
+    }
+
+    .sidebar {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .sidebar-info {
+        width: 100%;
+    }
+
+    .page-layout .container {
+        margin: 20px;
+    }
+}
+
+/* ========================================
+   GRID PAGE LAYOUT
+   ======================================== */
+
+.page-layout {
+    display: grid;
+
+    grid-template-columns: 220px 1fr;
+
+    grid-template-rows: auto 1fr auto;
+
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+
+    min-height: 100vh;
+}
+
+
+/* HEADER */
+.page-layout #main-header {
+    grid-area: header;
+}
+
+
+/* SIDEBAR */
+.sidebar {
+    grid-area: sidebar;
+
+    background: #0a192f;
+    color: white;
+
+    padding: 25px 20px;
+}
+
+.sidebar h2 {
+    color: white;
+
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.sidebar-item {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.sidebar-item h3 {
+    color: #63b3ed;
+
+    margin-bottom: 8px;
+}
+
+.sidebar-item p {
+    margin: 5px 0;
+
+    color: #e2e8f0;
+}
+
+
+/* MAIN */
+.page-layout .container {
+    grid-area: main;
+
+    width: auto;
+
+    margin: 30px;
+}
+
+
+/* FOOTER */
+.page-layout footer {
+    grid-area: footer;
+}
+
+
+/* ========================================
+   RESPONSIVE GRID
+   ======================================== */
+
+@media (max-width: 800px) {
+
+    .page-layout {
+        grid-template-columns: 1fr;
+
+        grid-template-rows: auto auto 1fr auto;
+
+        grid-template-areas:
+            "header"
+            "sidebar"
+            "main"
+            "footer";
+    }
+
+    .page-layout .container {
+        margin: 20px;
+    }
+}
+
 
 @media (max-width: 700px) {
 
@@ -502,4 +730,85 @@ footer p {
         grid-template-columns: 1fr;
     }
 
+}
+
+
+/* ========================================
+   FITNESS GALLERY
+   ======================================== */
+
+.gallery-section {
+    margin-top: 45px;
+    margin-bottom: 45px;
+}
+
+.gallery-section h2 {
+    margin-bottom: 8px;
+}
+
+.gallery-section > p {
+    margin-bottom: 20px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 160px);
+    gap: 15px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.gallery-caption {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 14px;
+    box-sizing: border-box;
+    background: rgba(10, 25, 47, 0.85);
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-item:hover .gallery-caption {
+    transform: translateY(0);
+}
+
+
+/* Gallery Responsive */
+@media (max-width: 800px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(5, 160px);
+        gap: 15px;
+    }
+}
+
+@media (max-width: 500px) {
+    .gallery {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(9, 180px);
+    }
 }
