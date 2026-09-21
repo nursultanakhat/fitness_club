@@ -53,7 +53,7 @@ h1,h2, h3 {
 
 .main-img, .service-img, .map-img {
     width: 100%;
-    max-height: 250px;
+    max-height: 300px;
     object-fit: cover;
     border-radius: 8px;
     margin-top: 15px;
@@ -431,7 +431,6 @@ footer p {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
-/* --- Стили для главной страницы (Hero & Advantages) --- */
 .hero-section {
     text-align: center;
     margin-bottom: 20px;
