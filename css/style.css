@@ -680,7 +680,7 @@ footer p {
 .sidebar-item p {
     margin: 5px 0;
 
-    color: #e2e8f0;
+    color: white;
 }
 
 
@@ -754,13 +754,13 @@ footer p {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 160px);
-    gap: 15px;
+    gap: 15px 
 }
 
 .gallery-item {
     position: relative;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 15px;
     background: #f7fafc;
     border: 1px solid #e2e8f0;
 }
@@ -810,5 +810,53 @@ footer p {
     .gallery {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(9, 180px);
+    }
+}
+
+
+.service-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    border-color: #3182ce;
+    box-shadow: 0 10px 25px rgba(49, 130, 206, 0.2) !important;
+}
+
+.service-item-box {
+    background-color: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #1a365d;
+    transition: background-color 0.2s ease;
+}
+
+.service-item-box:hover {
+    background-color: #edf2f7;
+}
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background-color: #07111e;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 8px 12px;
+        border-radius: 4px;
+        transition: background-color 0.2s ease;
+    }
+    
+    .navbar-nav .nav-link:hover {
+        background-color: rgba(49, 130, 206, 0.2);
     }
 }
