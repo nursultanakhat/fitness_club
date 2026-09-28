@@ -951,3 +951,142 @@ footer p {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
+
+/* ===============================
+   RESPONSIVE TYPOGRAPHY
+   MOBILE
+   =============================== */
+
+.schedule-page .responsive-title,
+.contact-page .responsive-title {
+    font-size: 1.8rem;
+}
+
+.schedule-page .responsive-text,
+.contact-page .responsive-text {
+    font-size: 0.95rem;
+}
+
+
+/* ===============================
+   SCHEDULE PAGE
+   =============================== */
+
+.schedule-page .schedule-table {
+    width: 100%;
+    margin-top: 0;
+}
+
+.schedule-page .schedule-table th {
+    white-space: nowrap;
+}
+
+.schedule-page .schedule-table td {
+    white-space: nowrap;
+}
+
+.schedule-page .schedule-info {
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+}
+
+.schedule-page .schedule-card {
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+
+.schedule-page .schedule-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+
+/* ===============================
+   CONTACT PAGE
+   =============================== */
+
+.contact-page .contact-info,
+.contact-page .registration-form {
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+}
+
+.contact-page .registration-form form {
+    display: block;
+}
+
+.contact-page .registration-form .form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.contact-page .registration-form .form-control,
+.contact-page .registration-form .form-select {
+    width: 100%;
+    margin: 0;
+}
+
+.contact-page .registration-form button {
+    width: auto;
+}
+
+
+/* ===============================
+   TABLET
+   =============================== */
+
+@media (min-width: 601px) {
+
+    .schedule-page .responsive-title,
+    .contact-page .responsive-title {
+        font-size: 2.2rem;
+    }
+
+    .schedule-page .responsive-text,
+    .contact-page .responsive-text {
+        font-size: 1.05rem;
+    }
+
+}
+
+
+/* ===============================
+   DESKTOP
+   =============================== */
+
+@media (min-width: 901px) {
+
+    .schedule-page .responsive-title,
+    .contact-page .responsive-title {
+        font-size: 2.6rem;
+    }
+
+    .schedule-page .responsive-text,
+    .contact-page .responsive-text {
+        font-size: 1.15rem;
+    }
+
+}
+
+
+/* ===============================
+   MOBILE
+   =============================== */
+
+@media (max-width: 600px) {
+
+    .schedule-page .schedule-table {
+        font-size: 0.85rem;
+    }
+
+    .schedule-page .schedule-table th,
+    .schedule-page .schedule-table td {
+        padding: 8px;
+    }
+
+}
