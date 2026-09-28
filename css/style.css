@@ -860,3 +860,94 @@ footer p {
         background-color: rgba(49, 130, 206, 0.2);
     }
 }
+
+/* ========================================
+   ASSIGNMENT 3 - ABDUGANI PAGES ONLY
+   Trainers + Pricing
+   ======================================== */
+
+/* Responsive typography: mobile first */
+.trainers-page .responsive-title,
+.pricing-page .responsive-title {
+    font-size: 1.8rem;
+}
+
+.trainers-page .responsive-text,
+.pricing-page .responsive-text {
+    font-size: 0.95rem;
+}
+
+/* Trainers */
+.trainers-page .trainer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.trainers-page .trainer-card {
+    min-width: 0;
+    padding: 20px;
+}
+
+.trainers-page .team-member-box,
+.pricing-page .membership-info {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+}
+
+/* Pricing table */
+.pricing-page .pricing-table {
+    margin-top: 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Pricing cards */
+.pricing-page .bonus-card {
+    background: #f7fafc;
+}
+
+
+/* =========================
+   TABLET
+   ========================= */
+
+@media (min-width: 601px) {
+
+    .trainers-page .responsive-title,
+    .pricing-page .responsive-title {
+        font-size: 2.2rem;
+    }
+
+    .trainers-page .responsive-text,
+    .pricing-page .responsive-text {
+        font-size: 1.05rem;
+    }
+
+    .trainers-page .trainer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* =========================
+   DESKTOP
+   ========================= */
+
+@media (min-width: 901px) {
+
+    .trainers-page .responsive-title,
+    .pricing-page .responsive-title {
+        font-size: 2.6rem;
+    }
+
+    .trainers-page .responsive-text,
+    .pricing-page .responsive-text {
+        font-size: 1.15rem;
+    }
+
+    .trainers-page .trainer-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
