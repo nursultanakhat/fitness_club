@@ -4,391 +4,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Schedule - Atlas Fitness Club</title>
 
-    <!-- Bootstrap CSS -->
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Our CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="schedule-page">
+<body class="bg-dark text-white">
 
-<div class="page-layout">
+    <!-- навбар -->
+    <nav class="navbar navbar-expand-lg navbar-dark px-4 shadow-sm" style="background-color: transparent !important;">
+        <div class="container-fluid px-0">
+            <a class="navbar-brand fw-bold text-white" href="index.html">
+                Atlas Fitness Club
+            </a>
 
-    <!-- HEADER -->
-    <header id="main-header">
+            <!-- гамбургер -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#scheduleNavbar" aria-controls="scheduleNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <nav class="navbar navbar-expand-lg navbar-dark w-100 px-2 px-sm-3 px-lg-4 shadow-sm">
-
-            <div class="container-fluid px-0">
-
-                <a class="navbar-brand fw-bold" href="index.html">
-                    Atlas Fitness Club
-                </a>
-
-                <!-- Hamburger -->
-                <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#scheduleNavbar"
-                    aria-controls="scheduleNavbar"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <!-- Navigation -->
-                <div class="collapse navbar-collapse" id="scheduleNavbar">
-
-                    <ul class="navbar-nav ms-auto align-items-lg-center">
-
-                        <li class="nav-item">
-                            <a class="nav-link px-lg-3" href="index.html">
-                                Home
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link px-lg-3" href="services.html">
-                                Services
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link px-lg-3" href="trainers.html">
-                                Trainers
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link px-lg-3" href="pricing.html">
-                                Pricing
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a
-                                class="nav-link active px-lg-3"
-                                aria-current="page"
-                                href="schedule.html"
-                            >
-                                Schedule
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link px-lg-3" href="contact.html">
-                                Contact
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </div>
-
+            <!-- навигция -->
+            <div class="collapse navbar-collapse" id="scheduleNavbar">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link text-white px-3" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white px-3" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white px-3" href="trainers.html">Trainers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white px-3" href="pricing.html">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white px-3 active" aria-current="page" href="schedule.html">Schedule</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white px-3" href="contact.html">Contact</a>
+                    </li>
+                </ul>
             </div>
-
-        </nav>
-
-    </header>
-
-
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-
-        <h2>Quick Info</h2>
-
-        <div class="sidebar-item">
-
-            <h3>Working Hours</h3>
-
-            <p>Mon - Sat</p>
-            <p>08:00 - 22:00</p>
-
         </div>
-
-        <div class="sidebar-item">
-
-            <h3>Location</h3>
-
-            <p>Astana, Kazakhstan</p>
-
-        </div>
-
-        <div class="sidebar-item">
-
-            <h3>Contact</h3>
-
-            <p>+7 700 123 45 67</p>
-            <p>info@atlasfitness.kz</p>
-
-        </div>
-
-    </aside>
+    </nav>
 
 
-    <!-- MAIN -->
-    <main class="container py-3 py-md-4 px-3 px-sm-4 px-lg-5">
+    <!--главный контейнер -->
+    <div class="container-fluid my-5 px-3">
+        <div class="row align-items-start">
 
-        <!-- TITLE -->
-        <section class="mb-4 mb-lg-5">
+            <!-- SIDEBAR / QUICK INFO (col-lg-2) -->
+            <div class="col-lg-2 text-white mb-4 mb-lg-0 px-2">
+                <div class="quick-info-box">
+                    <h2 class="fw-bold mb-4 text-white fs-4">Quick Info</h2>
 
-            <h1 class="responsive-title mb-3">
-                Class Schedule
-            </h1>
-
-            <p class="responsive-text mb-0">
-                Check our weekly schedule and choose the training
-                that fits your goals.
-            </p>
-
-        </section>
-
-
-        <!-- SCHEDULE TABLE -->
-        <section class="mb-4 mb-lg-5">
-
-            <div class="table-responsive">
-
-                <table class="table table-bordered table-hover align-middle text-center schedule-table mb-0">
-
-                    <thead class="table-dark">
-
-                    <tr>
-                        <th scope="col">Time</th>
-                        <th scope="col">Monday</th>
-                        <th scope="col">Tuesday</th>
-                        <th scope="col">Wednesday</th>
-                        <th scope="col">Thursday</th>
-                        <th scope="col">Friday</th>
-                        <th scope="col">Saturday</th>
-                    </tr>
-
-                    </thead>
-
-                    <tbody>
-
-                    <tr>
-                        <td>08:00</td>
-                        <td>Yoga</td>
-                        <td>CrossFit</td>
-                        <td>Yoga</td>
-                        <td>CrossFit</td>
-                        <td>Yoga</td>
-                        <td>Pilates</td>
-                    </tr>
-
-                    <tr>
-                        <td>10:00</td>
-                        <td>Strength</td>
-                        <td>Boxing</td>
-                        <td>Strength</td>
-                        <td>Boxing</td>
-                        <td>Strength</td>
-                        <td>CrossFit</td>
-                    </tr>
-
-                    <tr>
-                        <td>12:00</td>
-                        <td>Pilates</td>
-                        <td>Yoga</td>
-                        <td>Pilates</td>
-                        <td>Yoga</td>
-                        <td>Pilates</td>
-                        <td>Stretching</td>
-                    </tr>
-
-                    <tr>
-                        <td>15:00</td>
-                        <td>CrossFit</td>
-                        <td>Strength</td>
-                        <td>CrossFit</td>
-                        <td>Strength</td>
-                        <td>CrossFit</td>
-                        <td>Boxing</td>
-                    </tr>
-
-                    <tr>
-                        <td>18:00</td>
-                        <td>Boxing</td>
-                        <td>Pilates</td>
-                        <td>Yoga</td>
-                        <td>Boxing</td>
-                        <td>Yoga</td>
-                        <td>Strength</td>
-                    </tr>
-
-                    <tr>
-                        <td>20:00</td>
-                        <td>Stretching</td>
-                        <td>CrossFit</td>
-                        <td>Strength</td>
-                        <td>Pilates</td>
-                        <td>CrossFit</td>
-                        <td>Yoga</td>
-                    </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </section>
-
-
-        <!-- BOOTSTRAP GRID -->
-        <section class="row g-3 g-lg-4 mb-4 mb-lg-5">
-
-            <div class="col-12 col-lg-6">
-
-                <div class="schedule-info h-100 p-3 p-md-4">
-
-                    <h2 class="mb-3">
-                        Morning Training
-                    </h2>
-
-                    <p>
-                        Morning sessions are perfect for starting
-                        your day with energy and improving your fitness.
-                    </p>
-
-                    <a
-                        href="contact.html"
-                        class="btn btn-primary"
-                    >
-                        Register
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="col-12 col-lg-6">
-
-                <div class="schedule-info h-100 p-3 p-md-4">
-
-                    <h2 class="mb-3">
-                        Evening Training
-                    </h2>
-
-                    <p>
-                        Evening sessions are a great choice after
-                        work or study.
-                    </p>
-
-                    <a
-                        href="contact.html"
-                        class="btn btn-outline-primary"
-                    >
-                        Choose Training
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- THREE COLUMN BOOTSTRAP GRID -->
-        <section class="row g-3 g-lg-4">
-
-            <div class="col-12 col-md-6 col-lg-4">
-
-                <div class="card h-100 schedule-card">
-
-                    <div class="card-body">
-
-                        <h3 class="card-title h5">
-                            Yoga
-                        </h3>
-
-                        <p class="card-text">
-                            Improve flexibility, mobility and balance.
-                        </p>
-
+                    <div class="mb-3">
+                        <h3 class="h6 fw-bold text-info">Working Hours</h3>
+                        <p class="text-light small mb-0">Mon - Sat<br>08:00 - 22:00</p>
                     </div>
 
-                </div>
-
-            </div>
-
-
-            <div class="col-12 col-md-6 col-lg-4">
-
-                <div class="card h-100 schedule-card">
-
-                    <div class="card-body">
-
-                        <h3 class="card-title h5">
-                            CrossFit
-                        </h3>
-
-                        <p class="card-text">
-                            Build strength and improve endurance.
-                        </p>
-
+                    <div class="mb-3">
+                        <h3 class="h6 fw-bold text-info">Location</h3>
+                        <p class="text-light small mb-0">Astana, Kazakhstan</p>
                     </div>
 
-                </div>
-
-            </div>
-
-
-            <div class="col-12 col-md-12 col-lg-4">
-
-                <div class="card h-100 schedule-card">
-
-                    <div class="card-body">
-
-                        <h3 class="card-title h5">
-                            Boxing
-                        </h3>
-
-                        <p class="card-text">
-                            Develop speed, coordination and stamina.
-                        </p>
-
+                    <div>
+                        <h3 class="h6 fw-bold text-info">Contact</h3>
+                        <p class="text-light small mb-0">+7 700 123 45 67<br>info@atlasfitness.kz</p>
                     </div>
-
                 </div>
-
             </div>
 
-        </section>
 
-    </main>
+            <!-- главный контент -->
+            <div class="col-lg-10 px-2">
+                <div class="bg-white text-dark rounded-4 shadow p-4 p-md-5">
+
+                    <!-- TITLE SECTION -->
+                    <section class="mb-5 text-center">
+                        <h1 class="fw-bold display-6 mb-3" style="color: #0f172a;">
+                            Class Schedule
+                        </h1>
+                        <p class="text-secondary fs-5 mb-0">
+                            Check our weekly schedule and choose the training that fits your goals.
+                        </p>
+                    </section>
 
 
-    <!-- FOOTER -->
-    <footer>
+                    <!-- таблица -->
+                    <section class="mb-5">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover align-middle text-center mb-0">
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th scope="col">Time</th>
+                                        <th scope="col">Monday</th>
+                                        <th scope="col">Tuesday</th>
+                                        <th scope="col">Wednesday</th>
+                                        <th scope="col">Thursday</th>
+                                        <th scope="col">Friday</th>
+                                        <th scope="col">Saturday</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>08:00</td>
+                                        <td>Yoga</td>
+                                        <td>CrossFit</td>
+                                        <td>Yoga</td>
+                                        <td>CrossFit</td>
+                                        <td>Yoga</td>
+                                        <td>Pilates</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10:00</td>
+                                        <td>Strength</td>
+                                        <td>Boxing</td>
+                                        <td>Strength</td>
+                                        <td>Boxing</td>
+                                        <td>Strength</td>
+                                        <td>CrossFit</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12:00</td>
+                                        <td>Pilates</td>
+                                        <td>Yoga</td>
+                                        <td>Pilates</td>
+                                        <td>Yoga</td>
+                                        <td>Pilates</td>
+                                        <td>Stretching</td>
+                                    </tr>
+                                    <tr>
+                                        <td>15:00</td>
+                                        <td>CrossFit</td>
+                                        <td>Strength</td>
+                                        <td>CrossFit</td>
+                                        <td>Strength</td>
+                                        <td>CrossFit</td>
+                                        <td>Boxing</td>
+                                    </tr>
+                                    <tr>
+                                        <td>18:00</td>
+                                        <td>Boxing</td>
+                                        <td>Pilates</td>
+                                        <td>Yoga</td>
+                                        <td>Boxing</td>
+                                        <td>Yoga</td>
+                                        <td>Strength</td>
+                                    </tr>
+                                    <tr>
+                                        <td>20:00</td>
+                                        <td>Stretching</td>
+                                        <td>CrossFit</td>
+                                        <td>Strength</td>
+                                        <td>Pilates</td>
+                                        <td>CrossFit</td>
+                                        <td>Yoga</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
 
-        <p class="mb-0 py-3 px-2">
-            Development Team:
-            Nursultan Akhat,
-            Abdugani Nagashbay,
-            Tanat Azamat
+
+                    <!-- две карты -->
+                    <section class="row g-4 mb-5">
+                        <div class="col-12 col-lg-6">
+                            <div class="p-4 border rounded-4 h-100 shadow-sm d-flex flex-column justify-content-between" style="border-color: #3182ce !important;">
+                                <div>
+                                    <h2 class="h4 fw-bold mb-3" style="color: #0f172a;">Morning Training</h2>
+                                    <p class="text-muted mb-4">Morning sessions are perfect for starting your day with energy and improving your fitness.</p>
+                                </div>
+                                <div>
+                                    <a href="contact.html" class="btn btn-primary rounded-pill px-4">Register</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6">
+                            <div class="p-4 border rounded-4 h-100 shadow-sm d-flex flex-column justify-content-between" style="border-color: #3182ce !important;">
+                                <div>
+                                    <h2 class="h4 fw-bold mb-3" style="color: #0f172a;">Evening Training</h2>
+                                    <p class="text-muted mb-4">Evening sessions are a great choice after work or study.</p>
+                                </div>
+                                <div>
+                                    <a href="contact.html" class="btn btn-primary rounded-pill px-4">Choose Training</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <!-- три карты -->
+                    <section class="row g-4">
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="p-4 border rounded-4 h-100 shadow-sm" style="border-color: #3182ce !important;">
+                                <h3 class="card-title h5 fw-bold mb-3" style="color: #0f172a;">Yoga</h3>
+                                <p class="text-muted mb-0">Improve flexibility, mobility and balance.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="p-4 border rounded-4 h-100 shadow-sm" style="border-color: #3182ce !important;">
+                                <h3 class="card-title h5 fw-bold mb-3" style="color: #0f172a;">CrossFit</h3>
+                                <p class="text-muted mb-0">Build strength and improve endurance.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-12 col-lg-4">
+                            <div class="p-4 border rounded-4 h-100 shadow-sm" style="border-color: #3182ce !important;">
+                                <h3 class="card-title h5 fw-bold mb-3" style="color: #0f172a;">Boxing</h3>
+                                <p class="text-muted mb-0">Develop speed, coordination and stamina.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="text-center py-4 text-white">
+        <p class="mb-0">
+            Development Team: Nursultan Akhat, Abdugani Nagashbay, Tanat Azamat
         </p>
-
     </footer>
 
-</div>
-
-
-<!-- Bootstrap JS -->
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
