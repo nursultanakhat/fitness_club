@@ -140,3 +140,164 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    const modal = document.getElementById('trainerModal');
+    const closeButton = document.getElementById('closeTrainerModal');
+    const trainerInput = document.getElementById('selectedTrainer');
+    const trainerForm = document.getElementById('trainerForm');
+    const bookingMessage = document.getElementById('bookingMessage');
+
+    if (modal && closeButton && trainerInput && trainerForm && bookingMessage) {
+
+        const bookButtons = document.querySelectorAll('.book-trainer');
+
+        bookButtons.forEach(function(button) {
+
+            button.addEventListener('click', function() {
+
+                trainerForm.reset();
+
+                trainerInput.value = button.dataset.trainer;
+
+                bookingMessage.textContent = '';
+
+                modal.style.display = 'flex';
+
+                modal.setAttribute('aria-hidden', 'false');
+
+                document.getElementById('trainerName').focus();
+
+            });
+
+        });
+
+        function closeModal() {
+            modal.style.display = 'none';
+            modal.setAttribute('aria-hidden', 'true');
+        }
+
+        closeButton.addEventListener('click', closeModal);
+
+        modal.addEventListener('click', function(event) {
+
+            if (event.target === modal) {
+                closeModal();
+            }
+
+        });
+
+        document.addEventListener('keydown', function(event) {
+
+            if (event.key === 'Escape' && modal.style.display === 'flex') {
+                closeModal();
+            }
+
+        });
+
+        trainerForm.addEventListener('submit', function(event) {
+
+            event.preventDefault();
+
+            const name = document.getElementById('trainerName').value.trim();
+            const email = document.getElementById('trainerEmail').value.trim();
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (name === '') {
+
+                bookingMessage.textContent = 'Please enter your full name.';
+                bookingMessage.style.color = 'red';
+
+                return;
+            }
+
+            if (!emailPattern.test(email)) {
+
+                bookingMessage.textContent = 'Please enter a valid email address.';
+                bookingMessage.style.color = 'red';
+
+                return;
+            }
+
+            bookingMessage.textContent = 'Booking submitted successfully!';
+            bookingMessage.style.color = 'green';
+
+            trainerForm.reset();
+
+        });
+
+    }
+
+
+    const membershipPlan = document.getElementById('membershipPlan');
+    const membershipDuration = document.getElementById('membershipDuration');
+    const membershipTotal = document.getElementById('membershipTotal');
+    const membershipExplanation = document.getElementById('membershipExplanation');
+
+    if (
+        membershipPlan &&
+        membershipDuration &&
+        membershipTotal &&
+        membershipExplanation
+    ) {
+
+        const prices = {
+            monthly: 20000,
+            monthlyTrainer: 50000,
+            annual: 200000,
+            annualTrainer: 500000
+        };
+
+        function calculateMembership() {
+
+            const selectedPlan = membershipPlan.value;
+
+            const duration = Number(membershipDuration.value);
+
+            if (
+                membershipDuration.value.trim() === '' ||
+                !Number.isInteger(duration) ||
+                duration < 1 ||
+                duration > 36
+            ) {
+
+                membershipTotal.textContent = 'Invalid Duration';
+
+                membershipExplanation.textContent =
+                    'Please enter a whole number from 1 to 36.';
+
+                return;
+            }
+
+            const price = prices[selectedPlan];
+
+            const total = price * duration;
+
+            const period = selectedPlan.startsWith('annual')
+                ? 'year'
+                : 'month';
+
+            const periodLabel = duration === 1
+                ? period
+                : period + 's';
+
+            membershipTotal.textContent =
+                'Total: ' + total.toLocaleString('en-US') + ' ₸';
+
+            membershipExplanation.textContent =
+                duration + ' ' + periodLabel +
+                ' × ' + price.toLocaleString('en-US') + ' ₸';
+
+        }
+
+        membershipPlan.addEventListener('change', calculateMembership);
+
+        membershipDuration.addEventListener('input', calculateMembership);
+
+        calculateMembership();
+
+    }
+
+});

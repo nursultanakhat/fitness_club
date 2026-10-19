@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing - Atlas Fitness Club</title>
+    <title>Pricing | Atlas Fitness Club</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
@@ -11,195 +12,417 @@
 
 <body class="bg-dark text-white">
 
-    <nav class="navbar navbar-expand-lg navbar-dark px-4 shadow-sm" style="background-color: transparent !important;">
-        <div class="container-fluid px-0">
-            <a class="navbar-brand fw-bold text-white" href="index.html">Atlas Fitness Club</a>
+    <nav class="navbar navbar-expand-lg navbar-dark px-4 shadow-sm">
+        <div class="container-fluid">
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#pricingNavbar" aria-controls="pricingNavbar"
-                    aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand fw-bold" href="index.html">
+                Atlas Fitness Club
+            </a>
+
+            <div id="current-datetime" class="datetime-box ms-3 d-none d-lg-block">
+                Loading date and time...
+            </div>
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarContent"
+                aria-controls="navbarContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="pricingNavbar">
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link text-white px-3" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link text-white px-3" href="services.html">Services</a></li>
-                    <li class="nav-item"><a class="nav-link text-white px-3" href="trainers.html">Trainers</a></li>
-                    <li class="nav-item"><a class="nav-link text-white px-3 active" aria-current="page" href="pricing.html">Pricing</a></li>
-                    <li class="nav-item"><a class="nav-link text-white px-3" href="schedule.html">Schedule</a></li>
-                    <li class="nav-item"><a class="nav-link text-white px-3" href="contact.html">Contact</a></li>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="trainers.html">Trainers</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="pricing.html" aria-current="page">
+                            Pricing
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="schedule.html">Schedule</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+
                 </ul>
             </div>
+
         </div>
     </nav>
 
+    <main class="container-fluid my-5 px-3">
+        <div class="row">
 
-    <div class="container-fluid my-5 px-3">
-        <div class="row align-items-start">
-
-            <div class="col-lg-2 text-white mb-4 mb-lg-0 px-2">
+            <aside class="col-lg-2 mb-4">
                 <div class="quick-info-box">
-                    <h2 class="fw-bold mb-4 text-white fs-4">Quick Info</h2>
 
-                    <div class="mb-3">
-                        <h3 class="h6 fw-bold text-info">Working Hours</h3>
-                        <p class="text-light small mb-0">Mon - Sat<br>08:00 - 22:00</p>
+                    <h2 class="fs-4 fw-bold mb-4">Quick Info</h2>
+
+                    <div class="mb-4">
+                        <h3 class="h6 text-info">Working Hours</h3>
+                        <p class="small">
+                            Monday - Saturday<br>
+                            08:00 - 22:00
+                        </p>
                     </div>
 
-                    <div class="mb-3">
-                        <h3 class="h6 fw-bold text-info">Location</h3>
-                        <p class="text-light small mb-0">Astana, Kazakhstan</p>
+                    <div class="mb-4">
+                        <h3 class="h6 text-info">Location</h3>
+                        <p class="small">Astana, Kazakhstan</p>
                     </div>
 
-                    <div>
-                        <h3 class="h6 fw-bold text-info">Contact</h3>
-                        <p class="text-light small mb-0">+7 700 123 45 67<br>info@atlasfitness.kz</p>
+                    <div class="mb-4">
+                        <h3 class="h6 text-info">Contact</h3>
+                        <p class="small">
+                            +7 700 123 45 67<br>
+                            info@atlasfitness.kz
+                        </p>
                     </div>
+
                 </div>
-            </div>
+            </aside>
 
+            <div class="col-lg-10">
+                <div class="bg-white text-dark rounded-4 p-4 p-md-5">
 
-            <div class="col-lg-10 px-2">
-                <div class="bg-white text-dark rounded-4 shadow p-4 p-md-5">
+                    <section class="text-center mb-5">
+                        <h1 class="fw-bold mb-3">Membership & Pricing</h1>
 
-                    <section class="mb-5 text-center">
-                        <h1 class="fw-bold display-6 mb-3" style="color: #0f172a;">
-                            Membership & Pricing
-                        </h1>
-                        <p class="text-secondary fs-5 mb-0">
-                            Choose the membership that fits your fitness goals and training preferences.
+                        <p class="text-muted">
+                            Choose the best membership plan
+                            for your fitness journey.
                         </p>
                     </section>
 
-
                     <section class="mb-5">
+
+                        <h2 class="h4 fw-bold mb-4">
+                            Our Membership Plans
+                        </h2>
+
                         <div class="table-responsive">
-                            <table class="table table-bordered table-hover align-middle text-center mb-0">
-                                <thead class="table-primary">
+
+                            <table class="pricing-table">
+
+                                <thead>
                                     <tr>
-                                        <th scope="col">Membership Type</th>
-                                        <th scope="col">What's Included</th>
+                                        <th scope="col">Membership</th>
+                                        <th scope="col">Included Services</th>
                                         <th scope="col">Price</th>
                                     </tr>
                                 </thead>
+
                                 <tbody>
                                     <tr>
                                         <td class="fw-bold">Monthly</td>
-                                        <td>Gym access + group workouts</td>
-                                        <td class=" fw-bold">20,000 ₸ / month</td>
+                                        <td>Gym access and group workouts</td>
+                                        <td>20,000 ₸ / month</td>
                                     </tr>
+
                                     <tr>
                                         <td class="fw-bold">Monthly + Trainer</td>
-                                        <td>Gym access + group workouts + personal trainer</td>
-                                        <td class=" fw-bold">50,000 ₸ / month</td>
+                                        <td>
+                                            Gym access, group workouts
+                                            and personal trainer
+                                        </td>
+                                        <td>50,000 ₸ / month</td>
                                     </tr>
+
                                     <tr>
                                         <td class="fw-bold">Annual</td>
-                                        <td>Gym access + group workouts</td>
-                                        <td class="fw-bold">200,000 ₸ / year</td>
+                                        <td>Gym access and group workouts</td>
+                                        <td>200,000 ₸ / year</td>
                                     </tr>
+
                                     <tr>
                                         <td class="fw-bold">Annual + Trainer</td>
-                                        <td>Gym access + group workouts + personal trainer</td>
-                                        <td class="fw-bold">500,000 ₸ / year</td>
+                                        <td>
+                                            Gym access, group workouts
+                                            and personal trainer
+                                        </td>
+                                        <td>500,000 ₸ / year</td>
                                     </tr>
                                 </tbody>
-                            </table>
-                        </div>
-                    </section>
 
+                            </table>
+
+                        </div>
+
+                    </section>
 
                     <section class="row g-4 mb-5">
-                        <div class="col-sm-12 col-lg-6">
-                            <div class="p-4 border rounded-4 h-100 shadow-sm d-flex flex-column justify-content-between" style="border-color: #3182ce !important;">
-                                <div>
-                                    <h2 class="h4 fw-bold mb-3" style="color: #0f172a;">Flexible Membership</h2>
-                                    <p class="text-muted mb-4">Choose a monthly plan if you want flexibility and short-term access.</p>
-                                </div>
-                                <div>
-                                    <a href="contact.html" class="btn btn-primary rounded-pill px-4">
-                                        Choose Monthly
-                                    </a>
-                                </div>
+
+                        <div class="col-md-6">
+
+                            <div class="pricing-card">
+
+                                <h3 class="h4 fw-bold">
+                                    Flexible Membership
+                                </h3>
+
+                                <p class="text-muted">
+                                    Choose a monthly membership
+                                    for flexible training.
+                                </p>
+
+                                <a href="contact.html" class="btn btn-primary">
+                                    Choose Monthly
+                                </a>
+
                             </div>
+
                         </div>
 
-                        <div class="col-sm-12 col-lg-6">
-                            <div class="p-4 border rounded-4 h-100 shadow-sm d-flex flex-column justify-content-between" style="border-color: #3182ce !important;">
-                                <div>
-                                    <h2 class="h4 fw-bold mb-3" style="color: #0f172a;">Best for Long-Term Training</h2>
-                                    <p class="text-muted mb-4">Choose an annual plan for continuous training throughout the year.</p>
-                                </div>
-                                <div>
-                                    <a href="contact.html" class="btn btn-primary rounded-pill px-4">
-                                        Choose Annual
-                                    </a>
-                                </div>
+                        <div class="col-md-6">
+
+                            <div class="pricing-card">
+
+                                <h3 class="h4 fw-bold">
+                                    Long-Term Membership
+                                </h3>
+
+                                <p class="text-muted">
+                                    Choose an annual membership
+                                    for long-term fitness goals.
+                                </p>
+
+                                <a href="contact.html" class="btn btn-primary">
+                                    Choose Annual
+                                </a>
+
                             </div>
+
                         </div>
+
                     </section>
 
+                    <section class="mb-5">
 
-                    <section class="pt-4 border-top">
-                        <h2 class="h4 fw-bold mb-4" style="color: #0f172a;">
+                        <div class="calculator-box">
+
+                            <h2 class="h3 fw-bold mb-3">
+                                Membership Calculator
+                            </h2>
+
+                            <p class="text-muted">
+                                Select your membership plan and duration
+                                to calculate the total price.
+                            </p>
+
+                            <div class="row g-3">
+
+                                <div class="col-md-6">
+
+                                    <label
+                                        for="membershipPlan"
+                                        class="form-label fw-bold"
+                                    >
+                                        Select Membership Plan
+                                    </label>
+
+                                    <select
+                                        id="membershipPlan"
+                                        class="form-select"
+                                    >
+                                        <option value="monthly">
+                                            Monthly — 20,000 ₸
+                                        </option>
+
+                                        <option value="monthlyTrainer">
+                                            Monthly + Trainer — 50,000 ₸
+                                        </option>
+
+                                        <option value="annual">
+                                            Annual — 200,000 ₸
+                                        </option>
+
+                                        <option value="annualTrainer">
+                                            Annual + Trainer — 500,000 ₸
+                                        </option>
+                                    </select>
+
+                                </div>
+
+                                <div class="col-md-6">
+
+                                    <label
+                                        for="membershipDuration"
+                                        class="form-label fw-bold"
+                                    >
+                                        Number of Billing Periods
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        id="membershipDuration"
+                                        class="form-control"
+                                        min="1"
+                                        max="36"
+                                        step="1"
+                                        value="1"
+                                    >
+
+                                </div>
+
+                            </div>
+
+                            <div
+                                class="calculator-result"
+                                role="status"
+                                aria-live="polite"
+                            >
+
+                                <h3
+                                    id="membershipTotal"
+                                    class="h4 fw-bold"
+                                >
+                                    Total: 20,000 ₸
+                                </h3>
+
+                                <p
+                                    id="membershipExplanation"
+                                    class="mb-0"
+                                >
+                                    1 month × 20,000 ₸
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <section class="bonus-section">
+
+                        <h2 class="h3 fw-bold mb-4">
                             Extra Benefits
                         </h2>
 
-                        <div class="row g-4 mb-4">
-                            <div class="col-sm-12 col-md-6 col-lg-4">
-                                <div class="p-4 border rounded-4 h-100 shadow-sm" style="border-color: #3182ce !important;">
-                                    <h3 class="h5 fw-bold mb-3" style="color: #0f172a;">Swimming Pool</h3>
-                                    <p class="text-muted mb-0 small">Access to the swimming pool for training and recovery.</p>
-                                </div>
+                        <div class="bonus-grid">
+
+                            <div class="bonus-card">
+
+                                <h3 class="h5 fw-bold">
+                                    Swimming Pool
+                                </h3>
+
+                                <p>
+                                    Swimming pool access
+                                    for training and recovery.
+                                </p>
+
                             </div>
 
-                            <div class="col-sm-12 col-md-6 col-lg-4">
-                                <div class="p-4 border rounded-4 h-100 shadow-sm" style="border-color: #3182ce !important;">
-                                    <h3 class="h5 fw-bold mb-3" style="color: #0f172a;">Sauna</h3>
-                                    <p class="text-muted mb-0 small">Relax and recover after your workout.</p>
-                                </div>
+                            <div class="bonus-card">
+
+                                <h3 class="h5 fw-bold">
+                                    Sauna
+                                </h3>
+
+                                <p>
+                                    Relax and recover
+                                    after your workouts.
+                                </p>
+
                             </div>
 
-                            <div class="col-sm-12 col-md-6 col-lg-4">
-                                <div class="p-4 border rounded-4 h-100 shadow-sm" style="border-color: #3182ce !important;">
-                                    <h3 class="h5 fw-bold mb-3" style="color: #0f172a;">Fitness Consultation</h3>
-                                    <p class="text-muted mb-0 small">Professional advice to help you reach your fitness goals.</p>
-                                </div>
+                            <div class="bonus-card">
+
+                                <h3 class="h5 fw-bold">
+                                    Fitness Consultation
+                                </h3>
+
+                                <p>
+                                    Professional fitness advice
+                                    from experienced trainers.
+                                </p>
+
                             </div>
 
-                            <div class="col-sm-12 col-md-6 col-lg-4">
-                                <div class="p-4 border rounded-4 h-100 shadow-sm" style="border-color: #3182ce !important;">
-                                    <h3 class="h5 fw-bold mb-3" style="color: #0f172a;">Body Assessment</h3>
-                                    <p class="text-muted mb-0 small">Track your progress with regular body measurements.</p>
-                                </div>
+                            <div class="bonus-card">
+
+                                <h3 class="h5 fw-bold">
+                                    Body Assessment
+                                </h3>
+
+                                <p>
+                                    Track your fitness progress
+                                    and body measurements.
+                                </p>
+
                             </div>
+
                         </div>
 
-                        <div class="d-flex gap-3" role="group" aria-label="Membership actions">
-                            <a href="contact.html" class="btn btn-primary rounded-pill px-4">
-                                Join Now
-                            </a>
-                            <a href="trainers.html" class="btn btn-outline-secondary rounded-pill px-4">
-                                Meet Trainers
-                            </a>
-                        </div>
+                    </section>
+
+                    <section class="text-center mt-5">
+
+                        <h2 class="h4 fw-bold mb-3">
+                            Ready to Start Training?
+                        </h2>
+
+                        <p class="text-muted">
+                            Join Atlas Fitness Club today!
+                        </p>
+
+                        <a
+                            href="contact.html"
+                            class="btn btn-primary px-4 me-2"
+                        >
+                            Join Now
+                        </a>
+
+                        <a
+                            href="trainers.html"
+                            class="btn btn-outline-primary px-4"
+                        >
+                            Meet Trainers
+                        </a>
+
                     </section>
 
                 </div>
             </div>
 
         </div>
-    </div>
+    </main>
 
+    <footer class="text-center py-4">
 
-    <footer class="text-center py-4 text-white">
-        <p class="mb-0">
-            Development Team: Nursultan Akhat, Abdugani Nagashbay, Tanat Azamat
+        <p class="mb-0">Atlas Fitness Club</p>
+
+        <p class="small mb-0">
+            Development Team:
+            Nursultan Akhat,
+            Abdugani Nagashbay,
+            Tanat Azamat
         </p>
+
     </footer>
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+
 </body>
 </html>

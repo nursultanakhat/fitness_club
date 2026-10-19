@@ -242,6 +242,122 @@ footer p {
     margin-bottom: 0;
 }
 
+.trainer-card .book-trainer {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.trainer-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.trainer-modal-content {
+    background: white;
+    color: #212529;
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 30px;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+}
+
+.trainer-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    background: transparent;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #333;
+}
+
+.trainer-modal-close:hover {
+    color: #dc3545;
+}
+
+.trainer-modal-content label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.trainer-modal-content input,
+.trainer-modal-content textarea {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.trainer-modal-content input:focus,
+.trainer-modal-content textarea:focus {
+    outline: none;
+    border-color: #3182ce;
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.15);
+}
+
+.trainer-modal-content input[readonly] {
+    background: #f1f5f9;
+}
+
+.booking-message {
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.calculator-box {
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 25px;
+}
+
+.calculator-box h2 {
+    color: #1a365d;
+}
+
+.calculator-result {
+    background: #e7f1ff;
+    border: 1px solid #bee3f8;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.calculator-result h3 {
+    color: #1a365d;
+}
+
+.calculator-result p {
+    color: #4a5568;
+}
+
+@media (max-width: 576px) {
+    .trainer-modal-content {
+        padding: 20px;
+    }
+
+    .calculator-box {
+        padding: 20px;
+    }
+}
+
 
 
 
