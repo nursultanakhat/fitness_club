@@ -1202,3 +1202,65 @@ footer p {
     }
 
 }
+
+#scheduleTable td {
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+#scheduleTable td.schedule-hidden {
+    color: transparent;
+    background-color: #f1f5f9;
+    opacity: 0.35;
+    font-size: 0;
+}
+
+#scheduleTable td.schedule-visible {
+    background-color: #e7f1ff;
+    color: #1a365d;
+    font-weight: 600;
+    opacity: 1;
+}
+
+#trainingFilter {
+    border-radius: 8px;
+    padding: 12px;
+}
+
+#resetScheduleFilter {
+    border-radius: 8px;
+    padding: 12px;
+}
+
+#contactRegistrationForm .form-control,
+#contactRegistrationForm .form-select {
+    border-radius: 8px;
+    padding: 12px;
+}
+
+#contactRegistrationForm .is-valid {
+    border-color: #198754;
+}
+
+#contactRegistrationForm .is-invalid {
+    border-color: #dc3545;
+}
+
+#contactFormMessage {
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    #scheduleTable {
+        font-size: 13px;
+    }
+
+    #scheduleTable th,
+    #scheduleTable td {
+        padding: 8px;
+    }
+
+    #trainingFilter,
+    #resetScheduleFilter {
+        width: 100%;
+    }
+}

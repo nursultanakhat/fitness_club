@@ -301,3 +301,187 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    const trainingFilter = document.getElementById('trainingFilter');
+    const resetScheduleFilter = document.getElementById('resetScheduleFilter');
+    const scheduleTable = document.getElementById('scheduleTable');
+    const scheduleFilterResult = document.getElementById('scheduleFilterResult');
+
+    if (trainingFilter && resetScheduleFilter && scheduleTable && scheduleFilterResult) {
+
+        const scheduleRows = scheduleTable.querySelectorAll('tbody tr');
+
+        function filterSchedule() {
+
+            const selectedTraining = trainingFilter.value.toLowerCase();
+            let visibleClasses = 0;
+
+            scheduleRows.forEach(function(row) {
+
+                const cells = row.querySelectorAll('td');
+
+                cells.forEach(function(cell) {
+
+                    const trainingName = cell.textContent.trim().toLowerCase();
+
+                    if (selectedTraining === 'all' || trainingName === selectedTraining) {
+
+                        cell.classList.remove('schedule-hidden');
+                        cell.classList.add('schedule-visible');
+
+                        visibleClasses++;
+
+                    } else {
+
+                        cell.classList.add('schedule-hidden');
+                        cell.classList.remove('schedule-visible');
+
+                    }
+
+                });
+
+            });
+
+            if (selectedTraining === 'all') {
+
+                scheduleFilterResult.textContent =
+                    'Showing all ' + visibleClasses + ' training classes.';
+
+            } else {
+
+                scheduleFilterResult.textContent =
+                    'Found ' + visibleClasses + ' ' +
+                    trainingFilter.options[trainingFilter.selectedIndex].text.trim() +
+                    ' classes.';
+
+            }
+
+        }
+
+        trainingFilter.addEventListener('change', filterSchedule);
+
+        resetScheduleFilter.addEventListener('click', function() {
+
+            trainingFilter.value = 'all';
+            filterSchedule();
+
+        });
+
+        filterSchedule();
+
+    }
+
+
+    const contactForm = document.getElementById('contactRegistrationForm');
+    const contactFormMessage = document.getElementById('contactFormMessage');
+
+    if (contactForm && contactFormMessage) {
+
+        const fullNameInput = document.getElementById('contactFullName');
+        const emailInput = document.getElementById('contactEmail');
+        const phoneInput = document.getElementById('contactPhone');
+        const trainingInput = document.getElementById('contactTraining');
+
+        function validateField(input, isValid) {
+
+            if (isValid) {
+
+                input.classList.remove('is-invalid');
+                input.classList.add('is-valid');
+
+            } else {
+
+                input.classList.remove('is-valid');
+                input.classList.add('is-invalid');
+
+            }
+
+            return isValid;
+
+        }
+
+        contactForm.addEventListener('submit', function(event) {
+
+            event.preventDefault();
+
+            const fullName = fullNameInput.value.trim();
+            const email = emailInput.value.trim();
+            const phone = phoneInput.value.trim();
+            const training = trainingInput.value;
+
+            const nameValid = fullName.length >= 2;
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const emailValid = emailPattern.test(email);
+
+            const phoneDigits = phone.replace(/\D/g, '');
+            const phoneValid = phoneDigits.length >= 10 &&
+                               phoneDigits.length <= 15;
+
+            const trainingValid = training !== '';
+
+            validateField(fullNameInput, nameValid);
+            validateField(emailInput, emailValid);
+            validateField(phoneInput, phoneValid);
+            validateField(trainingInput, trainingValid);
+
+            const formValid =
+                nameValid &&
+                emailValid &&
+                phoneValid &&
+                trainingValid;
+
+            if (formValid) {
+
+                contactFormMessage.textContent =
+                    'Registration submitted successfully!';
+
+                contactFormMessage.className =
+                    'alert alert-success mt-3';
+
+                contactForm.reset();
+
+                const inputs = contactForm.querySelectorAll(
+                    '.is-valid, .is-invalid'
+                );
+
+                inputs.forEach(function(input) {
+
+                    input.classList.remove('is-valid', 'is-invalid');
+
+                });
+
+            } else {
+
+                contactFormMessage.textContent =
+                    'Please correct the highlighted fields.';
+
+                contactFormMessage.className =
+                    'alert alert-danger mt-3';
+
+            }
+
+        });
+
+        contactForm.addEventListener('reset', function() {
+
+            const inputs = contactForm.querySelectorAll(
+                '.is-valid, .is-invalid'
+            );
+
+            inputs.forEach(function(input) {
+
+                input.classList.remove('is-valid', 'is-invalid');
+
+            });
+
+            contactFormMessage.textContent = '';
+            contactFormMessage.className = 'mt-3';
+
+        });
+
+    }
+
+});

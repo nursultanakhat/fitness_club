@@ -4,201 +4,453 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Atlas Fitness Club</title>
+    <title>Contact | Atlas Fitness Club</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="bg-dark text-white">
 
-    <!-- навбар -->
-    <nav class="navbar navbar-expand-lg navbar-dark px-4 shadow-sm" style="background-color: transparent !important;">
+    <nav class="navbar navbar-expand-lg navbar-dark px-4 shadow-sm">
         <div class="container-fluid px-0">
+
             <a class="navbar-brand fw-bold text-white" href="index.html">
                 Atlas Fitness Club
             </a>
 
-            <!-- гамбургер кнопки -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#contactNavbar" aria-controls="contactNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <div id="current-datetime" class="datetime-box text-light small ms-3 d-none d-lg-block">
+                Loading date and time...
+            </div>
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#contactNavbar"
+                aria-controls="contactNavbar"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <!-- навигац ссылки -->
             <div class="collapse navbar-collapse" id="contactNavbar">
                 <ul class="navbar-nav ms-auto align-items-center">
+
                     <li class="nav-item">
-                        <a class="nav-link text-white px-3" href="index.html">Home</a>
+                        <a class="nav-link text-white px-3" href="index.html">
+                            Home
+                        </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link text-white px-3" href="services.html">Services</a>
+                        <a class="nav-link text-white px-3" href="services.html">
+                            Services
+                        </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link text-white px-3" href="trainers.html">Trainers</a>
+                        <a class="nav-link text-white px-3" href="trainers.html">
+                            Trainers
+                        </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link text-white px-3" href="pricing.html">Pricing</a>
+                        <a class="nav-link text-white px-3" href="pricing.html">
+                            Pricing
+                        </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link text-white px-3" href="schedule.html">Schedule</a>
+                        <a class="nav-link text-white px-3" href="schedule.html">
+                            Schedule
+                        </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link text-white px-3 active" aria-current="page" href="contact.html">Contact</a>
+                        <a class="nav-link text-white px-3 active"
+                           aria-current="page" href="contact.html">
+                            Contact
+                        </a>
                     </li>
+
                 </ul>
             </div>
+
         </div>
     </nav>
 
-
-    <!-- мэйн контейнер -->
-    <div class="container-fluid my-5 px-3">
+    <main class="container-fluid my-5 px-3">
         <div class="row align-items-start">
 
-            <!-- сайдбар -->
-            <div class="col-lg-2 text-white mb-4 mb-lg-0 px-2">
+            <aside class="col-lg-2 text-white mb-4 mb-lg-0 px-2">
                 <div class="quick-info-box">
-                    <h2 class="fw-bold mb-4 text-white fs-4">Quick Info</h2>
+
+                    <h2 class="fw-bold mb-4 text-white fs-4">
+                        Quick Info
+                    </h2>
 
                     <div class="mb-3">
-                        <h3 class="h6 fw-bold text-info">Working Hours</h3>
-                        <p class="text-light small mb-0">Mon - Sat<br>08:00 - 22:00</p>
+                        <h3 class="h6 fw-bold text-info">
+                            Working Hours
+                        </h3>
+
+                        <p class="text-light small mb-0">
+                            Mon - Sat<br>
+                            08:00 - 22:00
+                        </p>
                     </div>
 
                     <div class="mb-3">
-                        <h3 class="h6 fw-bold text-info">Location</h3>
-                        <p class="text-light small mb-0">Astana, Kazakhstan</p>
+                        <h3 class="h6 fw-bold text-info">
+                            Location
+                        </h3>
+
+                        <p class="text-light small mb-0">
+                            Astana, Kazakhstan
+                        </p>
                     </div>
 
                     <div>
-                        <h3 class="h6 fw-bold text-info">Contact</h3>
-                        <p class="text-light small mb-0">+7 700 123 45 67<br>info@atlasfitness.kz</p>
+                        <h3 class="h6 fw-bold text-info">
+                            Contact
+                        </h3>
+
+                        <p class="text-light small mb-0">
+                            +7 700 123 45 67<br>
+                            info@atlasfitness.kz
+                        </p>
                     </div>
+
                 </div>
-            </div>
+            </aside>
 
-
-            <!-- главный конт -->
             <div class="col-lg-10 px-2">
                 <div class="bg-white text-dark rounded-4 shadow p-4 p-md-5">
 
-                    <!-- тема -->
                     <section class="mb-5 text-center">
-                        <h1 class="fw-bold display-6 mb-3" style="color: #0f172a;">
-                            Contact Us
+
+                        <h1 class="fw-bold display-6 mb-3 text-dark">
+                            Contact & Registration
                         </h1>
+
                         <p class="text-secondary fs-5 mb-0">
-                            Get in touch with Atlas Fitness Club or register for one of our training programs.
+                            Contact Atlas Fitness Club or register
+                            for your favorite training program.
                         </p>
+
                     </section>
 
-
-                    <!-- контакт и форм -->
                     <section class="row g-4 mb-5">
 
-                        <!-- контакты -->
-                        <div class="col-12 col-lg-6">
-                            <div class="p-4 border rounded-4 h-100 shadow-sm" style="border-color: #3182ce !important;">
-                                <h2 class="h4 fw-bold mb-4" style="color: #0f172a;">
+                        <div class="col-md-6">
+
+                            <div class="p-4 border border-primary rounded-4 h-100 shadow-sm">
+
+                                <h2 class="h4 fw-bold mb-3 text-dark">
                                     Contact Information
                                 </h2>
 
-                                <p class="text-muted mb-3">
-                                    <strong class="text-dark">Address:</strong><br>
-                                    Samal Microdistrict, 12, 1st floor<br>
-                                    Saryarka District, Astana, Kazakhstan
+                                <p class="mb-3">
+                                    <strong>Address:</strong><br>
+                                    Astana, Kazakhstan
                                 </p>
 
-                                <p class="text-muted mb-3">
-                                    <strong class="text-dark">Phone:</strong><br>
+                                <p class="mb-3">
+                                    <strong>Phone:</strong><br>
                                     +7 700 123 45 67
                                 </p>
 
-                                <p class="text-muted mb-3">
-                                    <strong class="text-dark">Email:</strong><br>
+                                <p class="mb-3">
+                                    <strong>Email:</strong><br>
                                     info@atlasfitness.kz
                                 </p>
 
-                                <p class="text-muted mb-0">
-                                    <strong class="text-dark">Working Hours:</strong><br>
-                                    Monday - Saturday: 08:00 - 22:00
+                                <p class="mb-0">
+                                    <strong>Working Hours:</strong><br>
+                                    Monday - Saturday, 08:00 - 22:00
                                 </p>
+
                             </div>
+
                         </div>
 
+                        <div class="col-md-6">
 
-                        <!-- регистр -->
-                        <div class="col-12 col-lg-6">
-                            <div class="p-4 border rounded-4 h-100 shadow-sm" style="border-color: #3182ce !important;">
-                                <h2 class="h4 fw-bold mb-4" style="color: #0f172a;">
-                                    Register for Training
+                            <div class="p-4 border border-primary rounded-4 h-100 shadow-sm">
+
+                                <h2 class="h4 fw-bold mb-3 text-dark">
+                                    Why Contact Us?
                                 </h2>
 
-                                <form>
-                                    <!-- имя -->
-                                    <div class="mb-3">
-                                        <label for="name" class="form-label fw-bold text-secondary small">Name:</label>
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
-                                    </div>
+                                <p class="text-muted">
+                                    Our team is ready to help you choose
+                                    the best membership and training program.
+                                </p>
 
-                                    <!-- почта -->
-                                    <div class="mb-3">
-                                        <label for="email" class="form-label fw-bold text-secondary small">Email:</label>
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
-                                    </div>
+                                <p class="text-muted">
+                                    You can ask questions about trainers,
+                                    prices, class schedules and registration.
+                                </p>
 
-                                    <!-- трейнинг -->
-                                    <div class="mb-4">
-                                        <label for="training" class="form-label fw-bold text-secondary small">Training Direction:</label>
-                                        <select class="form-select" id="training" name="training" required>
-                                            <option value="">Select training</option>
-                                            <option value="strength">Strength Training</option>
-                                            <option value="crossfit">CrossFit</option>
-                                            <option value="yoga">Yoga</option>
-                                            <option value="pilates">Pilates</option>
-                                            <option value="boxing">Boxing</option>
-                                            <option value="swimming">Swimming</option>
-                                        </select>
-                                    </div>
+                                <a href="pricing.html"
+                                   class="btn btn-outline-primary rounded-pill px-4">
+                                    View Membership Plans
+                                </a>
 
-                                    <!-- кнопка-->
-                                    <button type="submit" class="btn btn-primary rounded-pill px-4">
-                                        Submit
-                                    </button>
-                                </form>
                             </div>
+
                         </div>
 
                     </section>
 
+                    <section class="mb-5">
 
-                    <section class="pt-4 border-top">
-                        <h2 class="h4 fw-bold mb-3" style="color: #0f172a;">
-                            Our Location
-                        </h2>
-                        <p class="text-muted mb-3">
-                            Visit Atlas Fitness Club and start your fitness journey with us.
-                        </p>
-                        <div class="text-center">
-                            <img src="images/location.jpg" alt="Atlas Fitness Club location" class="img-fluid rounded-4 shadow-sm w-100" style="max-height: 400px; object-fit: cover;">
+                        <div class="p-4 border rounded-4 shadow-sm">
+
+                            <h2 class="h3 fw-bold mb-3">
+                                Register for Training
+                            </h2>
+
+                            <p class="text-muted">
+                                Complete the form below to request
+                                registration for a training class.
+                            </p>
+
+                            <form id="contactRegistrationForm" novalidate>
+
+                                <div class="row g-3">
+
+                                    <div class="col-md-6">
+
+                                        <label for="contactFullName"
+                                               class="form-label fw-semibold">
+                                            Full Name
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            id="contactFullName"
+                                            name="fullName"
+                                            class="form-control"
+                                            placeholder="Enter your full name"
+                                            required
+                                        >
+
+                                        <div class="invalid-feedback">
+                                            Please enter your full name.
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-6">
+
+                                        <label for="contactEmail"
+                                               class="form-label fw-semibold">
+                                            Email Address
+                                        </label>
+
+                                        <input
+                                            type="email"
+                                            id="contactEmail"
+                                            name="email"
+                                            class="form-control"
+                                            placeholder="example@gmail.com"
+                                            required
+                                        >
+
+                                        <div class="invalid-feedback">
+                                            Please enter a valid email address.
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-6">
+
+                                        <label for="contactPhone"
+                                               class="form-label fw-semibold">
+                                            Phone Number
+                                        </label>
+
+                                        <input
+                                            type="tel"
+                                            id="contactPhone"
+                                            name="phone"
+                                            class="form-control"
+                                            placeholder="+7 700 123 45 67"
+                                            required
+                                        >
+
+                                        <div class="invalid-feedback">
+                                            Please enter a valid phone number.
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-6">
+
+                                        <label for="contactTraining"
+                                               class="form-label fw-semibold">
+                                            Training Type
+                                        </label>
+
+                                        <select
+                                            id="contactTraining"
+                                            name="training"
+                                            class="form-select"
+                                            required
+                                        >
+
+                                            <option value="">
+                                                Select Training
+                                            </option>
+
+                                            <option value="Yoga">
+                                                Yoga
+                                            </option>
+
+                                            <option value="CrossFit">
+                                                CrossFit
+                                            </option>
+
+                                            <option value="Boxing">
+                                                Boxing
+                                            </option>
+
+                                            <option value="Strength">
+                                                Strength Training
+                                            </option>
+
+                                            <option value="Pilates">
+                                                Pilates
+                                            </option>
+
+                                            <option value="Stretching">
+                                                Stretching
+                                            </option>
+
+                                        </select>
+
+                                        <div class="invalid-feedback">
+                                            Please select a training type.
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-12">
+
+                                        <label for="contactMessage"
+                                               class="form-label fw-semibold">
+                                            Additional Message (Optional)
+                                        </label>
+
+                                        <textarea
+                                            id="contactMessage"
+                                            name="message"
+                                            class="form-control"
+                                            rows="4"
+                                            placeholder="Write your message here"
+                                        ></textarea>
+
+                                    </div>
+
+                                    <div class="col-12">
+
+                                        <button
+                                            type="submit"
+                                            class="btn btn-primary rounded-pill px-5"
+                                        >
+                                            Submit Registration
+                                        </button>
+
+                                        <button
+                                            type="reset"
+                                            class="btn btn-outline-secondary rounded-pill px-4 ms-2"
+                                        >
+                                            Reset
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </form>
+
+                            <div
+                                id="contactFormMessage"
+                                class="mt-3"
+                                role="status"
+                                aria-live="polite"
+                            ></div>
+
                         </div>
+
+                    </section>
+
+                    <section class="row g-4">
+
+                        <div class="col-md-6">
+
+                            <div class="p-4 border border-primary rounded-4 h-100 shadow-sm">
+
+                                <h3 class="h5 fw-bold mb-3">
+                                    Visit Our Gym
+                                </h3>
+
+                                <p class="text-muted mb-0">
+                                    Visit Atlas Fitness Club in Astana
+                                    to learn more about our training
+                                    programs and membership options.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <div class="p-4 border border-primary rounded-4 h-100 shadow-sm">
+
+                                <h3 class="h5 fw-bold mb-3">
+                                    Explore Our Schedule
+                                </h3>
+
+                                <p class="text-muted mb-3">
+                                    Check available training sessions
+                                    before completing your registration.
+                                </p>
+
+                                <a href="schedule.html"
+                                   class="btn btn-outline-primary rounded-pill px-4">
+                                    View Schedule
+                                </a>
+
+                            </div>
+
+                        </div>
+
                     </section>
 
                 </div>
             </div>
 
         </div>
-    </div>
+    </main>
 
     <footer class="text-center py-4 text-white">
+
         <p class="mb-0">
-            Development Team: Nursultan Akhat, Abdugani Nagashbay, Tanat Azamat
+            Development Team:
+            Nursultan Akhat,
+            Abdugani Nagashbay,
+            Tanat Azamat
         </p>
+
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
 
 </body>
-
 </html>
