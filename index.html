@@ -13,7 +13,6 @@
         <div class="container-fluid px-0">
             <a class="navbar-brand fw-bold text-white" href="index.html">Atlas Fitness Club</a>
             
-            <!-- дата и время -->
             <div id="current-datetime" class="text-light small ms-3 d-none d-lg-block"></div>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -54,10 +53,9 @@
                 <div class="bg-white rounded-4 shadow p-5">
                     
                     <div class="text-center mb-4">
-                        <h1 class="fw-bold display-6 mb-3" style="color: #0f172a;">Welcome to Atlas Fitness Club</h1>
-                        <p class="text-secondary fs-5 mb-4">A modern space to achieve your sports and lifestyle goals.</p>
+                        <h1 id="main-title" class="fw-bold display-6 mb-3" style="color: #0f172a;">Welcome to Atlas Fitness Club</h1>
+                        <p id="subtitle" class="text-secondary fs-5 mb-4">A modern space to achieve your sports and lifestyle goals.</p>
                         
-                        <!-- Кнопка смены цвета фона -->
                         <div class="d-flex justify-content-center gap-3">
                             <a href="services.html" class="btn btn-primary btn-lg rounded-pill px-5">Join Now</a>
                             <button id="change-bg-btn" class="btn btn-outline-secondary btn-lg rounded-pill px-4">Change Theme Color</button>
@@ -92,7 +90,25 @@
                         </div>
                     </section>
 
-                    <!-- Часто задаваемые вопросы -->
+                    <section class="mt-5 pt-4 border-top">
+                        <h2 class="fw-bold mb-3 h3" style="color: #0f172a;">Rate Your Experience</h2>
+                        <p class="text-secondary small mb-3">Click on the stars below to rate Atlas Fitness Club:</p>
+                        <div id="rating-stars" class="fs-3 mb-3" style="cursor: pointer; color: #cbd5e1;">
+                            <span class="star" data-value="1">★</span>
+                            <span class="star" data-value="2">★</span>
+                            <span class="star" data-value="3">★</span>
+                            <span class="star" data-value="4">★</span>
+                            <span class="star" data-value="5">★</span>
+                        </div>
+                        <p id="rating-result" class="fw-semibold text-primary mb-4">Current Rating: Not rated yet</p>
+
+                        <div class="p-3 bg-light rounded-3">
+                            <h3 class="h5 fw-bold text-dark mb-2">Time Greeting </h3>
+                            <p id="switch-greeting" class="text-secondary mb-2">Loading greeting...</p>
+                            <button id="sound-btn" class="btn btn-sm btn-outline-primary rounded-pill px-3">Play Notification Sound 🎵</button>
+                        </div>
+                    </section>
+
                     <section class="mt-5 pt-4 border-top">
                         <h2 class="fw-bold mb-4 h3" style="color: #0f172a;">Frequently Asked Questions (FAQ)</h2>
                         <div class="accordion-container">
