@@ -193,9 +193,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            bookingMessage.textContent = 'Booking submitted successfully!';
-            bookingMessage.style.color = 'green';
+            const selectedTrainerName = trainerInput.value;
             trainerForm.reset();
+            trainerInput.value = selectedTrainerName;
+            bookingMessage.textContent = 'Form validated successfully for ' + selectedTrainerName + '.';
+            bookingMessage.style.color = 'green';
         });
     }
 });
@@ -212,7 +214,12 @@ document.addEventListener('DOMContentLoaded', function() {
             monthly: 20000,
             monthlyTrainer: 50000,
             annual: 200000,
-            annualTrainer: 500000
+            annualTrainer: 500000,
+
+            // Object method: calculate the selected plan's total price.
+            calculateTotal(plan, duration) {
+                return this[plan] * duration;
+            }
         };
 
         function calculateMembership() {
@@ -226,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             const price = prices[selectedPlan];
-            const total = price * duration;
+            const total = prices.calculateTotal(selectedPlan, duration);
             const period = selectedPlan.startsWith('annual') ? 'year' : 'month';
             const periodLabel = duration === 1 ? period : period + 's';
 
@@ -291,6 +298,42 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactFormMessage = document.getElementById('contactFormMessage');
 
     if (contactForm && contactFormMessage) {
+        const nextButton = document.getElementById('contactNext');
+        const backButton = document.getElementById('contactBack');
+        const submitButton = document.querySelector('button[type="submit"]');
+        submitButton.hidden = true
+        const firstStepFields = document.querySelectorAll('[data-step="1"]');
+        const secondStepFields = document.querySelectorAll('[data-step="2"]');
+        for(const field of secondStepFields){
+            field.hidden = true;
+        }
+        nextButton.addEventListener('click', function(){
+            for(const field of firstStepFields){
+                field.hidden = true;
+            }
+        
+            for(const field of secondStepFields){
+                field.hidden = false;
+        }
+        backButton.disabled = false;
+        nextButton.hidden = true;
+        submitButton.hidden = false;
+        }
+    )
+    function showFirstStep() {
+        for(const field of firstStepFields){
+            field.hidden = false;
+        }
+
+        for(const field of secondStepFields){
+            field.hidden = true;
+        }
+        backButton.disabled = true;
+        nextButton.hidden = false;
+        submitButton.hidden = true;
+    }
+    backButton.addEventListener('click', showFirstStep);
+
         const fullNameInput = document.getElementById('contactFullName');
         const emailInput = document.getElementById('contactEmail');
         const phoneInput = document.getElementById('contactPhone');
@@ -330,21 +373,25 @@ document.addEventListener('DOMContentLoaded', function() {
             const formValid = nameValid && emailValid && phoneValid && trainingValid;
 
             if (formValid) {
+                contactForm.reset();
                 contactFormMessage.textContent = 'Registration submitted successfully!';
                 contactFormMessage.className = 'alert alert-success mt-3';
-                contactForm.reset();
 
                 const inputs = contactForm.querySelectorAll('.is-valid, .is-invalid');
                 inputs.forEach(function(input) {
                     input.classList.remove('is-valid', 'is-invalid');
                 });
             } else {
+                if (!nameValid || !emailValid || !phoneValid) {
+                    showFirstStep();
+                }
                 contactFormMessage.textContent = 'Please correct the highlighted fields.';
                 contactFormMessage.className = 'alert alert-danger mt-3';
             }
         });
 
         contactForm.addEventListener('reset', function() {
+            showFirstStep();
             const inputs = contactForm.querySelectorAll('.is-valid, .is-invalid');
             inputs.forEach(function(input) {
                 input.classList.remove('is-valid', 'is-invalid');
@@ -482,4 +529,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+});
+document.addEventListener('DOMContentLoaded', function () {
+    const menuLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+    menuLinks.forEach(function (link, index) {
+        link.addEventListener('keydown', function (event) {
+            if(event.key === 'ArrowRight' && menuLinks[index+1]){
+                event.preventDefault();
+                menuLinks[index + 1].focus();
+            }
+            if(event.key === 'ArrowLeft' && menuLinks[index - 1]){
+                event.preventDefault();
+                menuLinks[index - 1].focus();
+            }
+        });
+    });
 });
