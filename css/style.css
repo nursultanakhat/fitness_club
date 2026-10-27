@@ -243,7 +243,7 @@ footer p {
 }
 
 .trainer-card .book-trainer {
-    margin-top: 20px;
+    margin-top: auto;
     padding: 10px 20px;
     border-radius: 8px;
     font-weight: 600;
@@ -1262,5 +1262,20 @@ footer p {
     #trainingFilter,
     #resetScheduleFilter {
         width: 100%;
+    }
+}
+/* Fade in the visible fields when switching Contact form steps. */
+@keyframes contactStepAppear {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#contactRegistrationForm [data-step]:not([hidden]) {
+    animation: contactStepAppear 0.3s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #contactRegistrationForm [data-step]:not([hidden]) {
+        animation: none;
     }
 }

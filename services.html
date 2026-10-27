@@ -54,7 +54,6 @@
                         <h1 class="fw-bold display-6 mb-2" style="color: #0f172a;">Our Services</h1>
                         <p class="text-secondary fs-5 mb-4">Choose the direction that fits you best:</p>
                         
-                        <!-- Кнопка Popup-формы -->
                         <button id="open-popup-btn" class="btn btn-primary btn-lg rounded-pill px-5 shadow-sm">Book a Training</button>
                     </div>
 
@@ -146,6 +145,19 @@
                     </section>
 
                     <section class="mt-5 pt-4 border-top">
+                        <h2 class="fw-bold h3 mb-3" style="color: #0f172a;">Advanced Services Catalog</h2>
+                        
+                        <div class="mb-3 d-flex gap-2">
+                            <button class="btn btn-outline-primary btn-sm filter-btn active" data-filter="all">All Services</button>
+                            <button class="btn btn-outline-primary btn-sm filter-btn" data-filter="cardio">Cardio</button>
+                            <button class="btn btn-outline-primary btn-sm filter-btn" data-filter="strength">Strength</button>
+                        </div>
+
+                        <div class="row g-3" id="dynamic-catalog-container">
+                        </div>
+                    </section>
+
+                    <section class="mt-5 pt-4 border-top">
                         <h3 class="fw-bold h5" style="color: #0f172a;">About the Team Members</h3>
                         <p class="text-muted small mb-0">This page and project were developed by our dedicated student team to master HTML and CSS basics.</p>
                     </section>
@@ -164,7 +176,6 @@
             <h3 class="fw-bold mb-3 text-center">Book Your Training</h3>
             <p class="text-secondary small text-center mb-4">Fill out the form below to reserve your spot.</p>
             
-            <!-- Форма с валидацией (Задача 1) -->
             <form id="booking-form" novalidate>
                 <div class="mb-3">
                     <label for="fullName" class="form-label fw-bold small">Full Name</label>
