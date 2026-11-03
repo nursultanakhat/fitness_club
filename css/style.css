@@ -1279,3 +1279,28 @@ footer p {
         animation: none;
     }
 }
+
+/* Основной темный режим для body */
+body.dark-theme {
+    background-color: #121212 !important;
+    color: #ffffff !important;
+}
+
+/* Перекрашиваем карточки и блоки в темный цвет */
+body.dark-theme .card,
+body.dark-theme .service-card,
+body.dark-theme .bg-white,
+body.dark-theme div[class*="bg-"] {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+}
+
+/* Принудительно делаем ВСЕ тексты, заголовки и параграфы внутри карточек темной темы белыми и четкими */
+body.dark-theme .card *,
+body.dark-theme .service-card *,
+body.dark-theme h1, body.dark-theme h2, body.dark-theme h3, 
+body.dark-theme h4, body.dark-theme h5, body.dark-theme h6, 
+body.dark-theme p, body.dark-theme span, body.dark-theme li, 
+body.dark-theme label, body.dark-theme small {
+    color: #ffffff !important;
+}

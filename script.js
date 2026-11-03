@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // TASK 1: Form Validation
+    // TASK 1 & TASK 6: Form Validation & Loading Spinner
     const bookingForm = document.getElementById('booking-form');
     if (bookingForm) {
         bookingForm.addEventListener('submit', function(event) {
@@ -119,22 +119,38 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             if (isValid) {
-                alert('Success! Your form has been successfully validated and submitted.');
-                bookingForm.reset();
+                const $btn = $('#submit-btn');
                 
-                fullNameInput.classList.remove('is-valid');
-                emailInput.classList.remove('is-valid');
-                passwordInput.classList.remove('is-valid');
-                confirmPasswordInput.classList.remove('is-valid');
-                
-                if (popupOverlay) {
-                    popupOverlay.style.display = 'none';
+                if ($btn.length > 0) {
+                    $btn.prop('disabled', true);
+                    $btn.html(`
+                        <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                        Please wait...
+                    `);
                 }
+
+                setTimeout(function() {
+                    showToast('Success! Your form has been successfully validated and submitted.');
+                    
+                    bookingForm.reset();
+                    
+                    fullNameInput.classList.remove('is-valid');
+                    emailInput.classList.remove('is-valid');
+                    passwordInput.classList.remove('is-valid');
+                    confirmPasswordInput.classList.remove('is-valid');
+                    
+                    if ($btn.length > 0) {
+                        $btn.prop('disabled', false);
+                        $btn.html('Submit Booking');
+                    }
+                    
+                    if (popupOverlay) {
+                        popupOverlay.style.display = 'none';
+                    }
+                }, 1500);
             }
         });
     }
-
-});
 
 // Trainer Booking Modal Logic
 document.addEventListener('DOMContentLoaded', function() {
@@ -216,7 +232,6 @@ document.addEventListener('DOMContentLoaded', function() {
             annual: 200000,
             annualTrainer: 500000,
 
-            // Object method: calculate the selected plan's total price.
             calculateTotal(plan, duration) {
                 return this[plan] * duration;
             }
@@ -301,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const nextButton = document.getElementById('contactNext');
         const backButton = document.getElementById('contactBack');
         const submitButton = document.querySelector('button[type="submit"]');
-        submitButton.hidden = true
+        submitButton.hidden = true;
         const firstStepFields = document.querySelectorAll('[data-step="1"]');
         const secondStepFields = document.querySelectorAll('[data-step="2"]');
         for(const field of secondStepFields){
@@ -314,25 +329,25 @@ document.addEventListener('DOMContentLoaded', function() {
         
             for(const field of secondStepFields){
                 field.hidden = false;
-        }
-        backButton.disabled = false;
-        nextButton.hidden = true;
-        submitButton.hidden = false;
-        }
-    )
-    function showFirstStep() {
-        for(const field of firstStepFields){
-            field.hidden = false;
-        }
+            }
+            backButton.disabled = false;
+            nextButton.hidden = true;
+            submitButton.hidden = false;
+        });
 
-        for(const field of secondStepFields){
-            field.hidden = true;
+        function showFirstStep() {
+            for(const field of firstStepFields){
+                field.hidden = false;
+            }
+
+            for(const field of secondStepFields){
+                field.hidden = true;
+            }
+            backButton.disabled = true;
+            nextButton.hidden = false;
+            submitButton.hidden = true;
         }
-        backButton.disabled = true;
-        nextButton.hidden = false;
-        submitButton.hidden = true;
-    }
-    backButton.addEventListener('click', showFirstStep);
+        backButton.addEventListener('click', showFirstStep);
 
         const fullNameInput = document.getElementById('contactFullName');
         const emailInput = document.getElementById('contactEmail');
@@ -402,8 +417,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-
-
 document.addEventListener('DOMContentLoaded', function() {
 
     const stars = document.querySelectorAll('#rating-stars .star');
@@ -425,7 +438,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     setTimeout(() => { s.style.transform = 'scale(1)'; }, 200);
                 });
 
-                // Modify content dynamically using textContent
                 ratingResult.textContent = `Thank you! You rated Atlas Fitness Club ${val} out of 5 stars. ⭐`;
             });
         });
@@ -470,7 +482,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const gain = audioCtx.createGain();
 
                 osc.type = 'sine';
-                osc.frequency.setValueAtTime(659.25, audioCtx.currentTime); // E5 note
+                osc.frequency.setValueAtTime(659.25, audioCtx.currentTime);
                 gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
 
                 osc.connect(gain);
@@ -530,6 +542,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 });
+
 document.addEventListener('DOMContentLoaded', function () {
     const menuLinks = document.querySelectorAll('.navbar-nav .nav-link');
 
@@ -546,3 +559,156 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+// jQuery Tasks (Task 0, Task 1, Task 2, Task 3, Task 4, Task 6 & Task 7)
+$(document).ready(function() {
+    console.log("jQuery is ready!");
+
+    // 1. Функция показа всплывающего уведомления (Task 7)
+    function showToast(message) {
+        const $toast = $('#custom-toast');
+        $('#toast-message-text').text(message);
+        $toast.fadeIn();
+
+        setTimeout(function() {
+            $toast.fadeOut();
+        }, 3500);
+    }
+
+    // --- Task 1, Task 2 & Task 3: Поиск, автоподсказки и подсветка ---
+    $('#searchInput').on('keyup', function() {
+        let keyword = $(this).val().trim();
+        let $suggestionsBox = $('#suggestions');
+        
+        $suggestionsBox.empty();
+        
+        let suggestionsList = ["Gym Area", "Group Programs", "Personal Training", "Yoga and Stretching", "CrossFit", "Pilates"];
+
+        if (keyword.length > 0) {
+            let matches = suggestionsList.filter(item => item.toLowerCase().includes(keyword.toLowerCase()));
+            matches.forEach(match => {
+                $suggestionsBox.append(`<div class="suggestion-item dropdown-item p-2" style="cursor: pointer;">${match}</div>`);
+            });
+            $suggestionsBox.show();
+        } else {
+            $suggestionsBox.hide();
+        }
+
+        // Убираем старую подсветку
+        $('.service-card mark').each(function() {
+            $(this).replaceWith($(this).text());
+        });
+
+        // Подсвечиваем найденный текст (Task 3)
+        if (keyword.length > 0) {
+            let regex = new RegExp('(' + keyword + ')', 'gi');
+            $('.service-card h3, .service-card p').each(function() {
+                let html = $(this).html();
+                if (!html.includes('mark')) {
+                    let newHtml = html.replace(regex, '<mark style="background-color: #ffeb3b; padding: 0 2px; border-radius: 2px;">$1</mark>');
+                    $(this).html(newHtml);
+                }
+            });
+        }
+    });
+
+    // Клик по автоподсказке
+    $(document).on('click', '.suggestion-item', function() {
+        $('#searchInput').val($(this).text()).trigger('keyup');
+        $('#suggestions').hide();
+    });
+
+    // --- Task 4: Scroll Progress Bar ---
+    $(window).on('scroll', function() {
+        let sTop = $(window).scrollTop();
+        let docHeight = $(document).height() - $(window).height();
+        let scrollPercent = (sTop / docHeight) * 100;
+        $('#scroll-progress-bar').css('width', scrollPercent + '%');
+    });
+
+    // --- Task 6 & Task 7: Валидация формы, спиннер загрузки и уведомление ---
+    const bookingForm = document.getElementById('booking-form');
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            let isValid = true;
+            
+            const fullNameInput = document.getElementById('fullName');
+            const namePattern = /^[A-Za-zА-Яа-яЁё\s]+$/; 
+            if (fullNameInput.value.trim() === '' || !namePattern.test(fullNameInput.value.trim()) || fullNameInput.value.trim().length < 2) {
+                fullNameInput.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                fullNameInput.classList.remove('is-invalid');
+                fullNameInput.classList.add('is-valid');
+            }
+            
+            const emailInput = document.getElementById('email');
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(emailInput.value.trim())) {
+                emailInput.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                emailInput.classList.remove('is-invalid');
+                emailInput.classList.add('is-valid');
+            }
+
+            const passwordInput = document.getElementById('password');
+            if (passwordInput.value.length < 6) {
+                passwordInput.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                passwordInput.classList.remove('is-invalid');
+                passwordInput.classList.add('is-valid');
+            }
+
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            if (confirmPasswordInput.value !== passwordInput.value || confirmPasswordInput.value === '') {
+                confirmPasswordInput.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                confirmPasswordInput.classList.remove('is-invalid');
+                confirmPasswordInput.classList.add('is-valid');
+            }
+
+            // Если всё валидно — запускаем анимацию и тост
+            if (isValid) {
+                const $btn = $('#submit-btn');
+                
+                if ($btn.length > 0) {
+                    $btn.prop('disabled', true);
+                    $btn.html(`
+                        <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                        Please wait...
+                    `);
+                }
+
+                setTimeout(function() {
+                    // Вызываем наше красивое уведомление (Task 7)
+                    showToast('Success! Your form has been successfully validated and submitted.');
+                    
+                    bookingForm.reset();
+                    
+                    fullNameInput.classList.remove('is-valid');
+                    emailInput.classList.remove('is-valid');
+                    passwordInput.classList.remove('is-valid');
+                    confirmPasswordInput.classList.remove('is-valid');
+                    
+                    if ($btn.length > 0) {
+                        $btn.prop('disabled', false);
+                        $btn.html('Submit Booking');
+                    }
+                    
+                    const popupOverlay = document.getElementById('popup-overlay'); // или ваш класс оверлея
+                    if (popupOverlay) {
+                        popupOverlay.style.display = 'none';
+                    }
+                }, 1500);
+            }
+        });
+    }
+
+});
+
+}); // Закрывает$(document).ready()

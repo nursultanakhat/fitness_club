@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="bg-dark text-white">
+    <!-- Scroll Progress Bar -->
+<div id="scroll-progress-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 5px; background: transparent; z-index: 9999;">
+    <div id="scroll-progress-bar" style="height: 100%; width: 0%; background: linear-gradient(90deg, #3182ce, #00d2ff); transition: width 0.1s ease-out;"></div>
+</div>
 
     <nav class="navbar navbar-expand-lg navbar-dark px-4 shadow-sm" style="background-color: transparent !important;">
         <div class="container-fluid px-0">
@@ -54,12 +58,18 @@
                         <h1 class="fw-bold display-6 mb-2" style="color: #0f172a;">Our Services</h1>
                         <p class="text-secondary fs-5 mb-4">Choose the direction that fits you best:</p>
                         
-                        <button id="open-popup-btn" class="btn btn-primary btn-lg rounded-pill px-5 shadow-sm">Book a Training</button>
+                        <button id="open-popup-btn" class="btn btn-primary btn-lg rounded-pill px-5 shadow-sm mb-4">Book a Training</button>
+                        
+                        <!-- Строка живого поиска и подсказки (Task 1 & Task 2) -->
+                        <div class="position-relative mx-auto" style="max-width: 600px;">
+                            <input type="text" id="searchInput" class="form-control form-control-lg rounded-pill px-4 shadow-sm" placeholder="Search services, workouts...">
+                            <div id="suggestions" class="dropdown-menu w-100 shadow-sm border-0 mt-1 text-start" style="display: none; position: absolute; z-index: 1000;"></div>
+                        </div>
                     </div>
 
                     <div class="row g-4 mb-5">
                         <div class="col-lg-4 col-md-6">
-                            <div class="card h-100 p-3 shadow-sm border rounded-4 d-flex flex-column justify-content-between" style="border-color: #3182ce !important;">
+                            <div class="card service-card h-100 p-3 shadow-sm border rounded-4 d-flex flex-column justify-content-between" style="border-color: #3182ce !important;">
                                 <div>
                                     <h3 class="h5 fw-bold mb-3" style="color: #0f172a;">Gym Area</h3>
                                     <p class="text-muted small mb-4">Spacious zone with heavy-duty weight machines and free weights.</p>
@@ -71,7 +81,7 @@
                         </div>
 
                         <div class="col-lg-4 col-md-6">
-                            <div class="card h-100 p-3 shadow-sm border rounded-4" style="border-color: #3182ce !important;">
+                            <div class="card service-card h-100 p-3 shadow-sm border rounded-4" style="border-color: #3182ce !important;">
                                 <h3 class="h5 fw-bold mb-3" style="color: #0f172a;">Group Programs</h3>
                                 <p class="text-muted small mb-4">Join our dynamic group sessions led by expert instructors.</p>
                                 
@@ -84,7 +94,7 @@
                         </div>
 
                         <div class="col-lg-4 col-md-12">
-                            <div class="card h-100 p-3 shadow-sm border rounded-4 d-flex flex-column justify-content-between" style="border-color: #3182ce !important;">
+                            <div class="card service-card h-100 p-3 shadow-sm border rounded-4 d-flex flex-column justify-content-between" style="border-color: #3182ce !important;">
                                 <div>
                                     <h3 class="h5 fw-bold mb-3" style="color: #0f172a;">Personal Training</h3>
                                     <p class="text-muted small mb-4">One-on-one coaching customized strictly to your individual fitness goals.</p>
@@ -201,8 +211,7 @@
                     <div class="invalid-feedback" id="confirm-error">Passwords do not match.</div>
                 </div>
 
-                <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">Submit Booking</button>
-            </form>
+<button type="submit" id="submit-btn" class="btn btn-primary w-100 py-2 fw-bold">Submit Booking</button>            </form>
         </div>
     </div>
 
@@ -210,7 +219,22 @@
         <p class="mb-0">Development Team: Nursultan Akhat, Abdugani Nagashbay, Tanat Azamat</p>
     </footer>
 
+    <!-- Task 7: Toast Notification Container -->
+<div id="custom-toast" class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1050; display: none;">
+    <div class="toast show bg-success text-white shadow-lg border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header bg-success text-white border-0">
+            <strong class="me-auto">Atlas Fitness</strong>
+            <small>Just now</small>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close" onclick="$('#custom-toast').fadeOut();"></button>
+        </div>
+        <div class="toast-body fw-semibold" id="toast-message-text">
+            Success! Your booking has been submitted.
+        </div>
+    </div>
+</div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
