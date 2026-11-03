@@ -1,0 +1,49 @@
+/* Assignment 6 additions, scoped to pages 5 and 6. */
+.assignment6-page #scheduleSearch {
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.assignment6-page .schedule-search-match {
+    background: #ffe082;
+    color: #342600;
+    padding: 0 2px;
+    border-radius: 3px;
+}
+
+.assignment6-page .a6-copy-wrap {
+    display: inline-block;
+    position: relative;
+    margin: 0.25rem 0 0.25rem 0.5rem;
+}
+
+.assignment6-page .a6-copy-tooltip {
+    position: absolute;
+    z-index: 10;
+    right: 0;
+    bottom: calc(100% + 0.5rem);
+    width: max-content;
+    max-width: min(230px, 75vw);
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    background: #142b33;
+    color: #fff;
+    font-size: 0.8rem;
+    box-shadow: 0 3px 12px #0003;
+}
+
+.assignment6-page .a6-copy-buffer {
+    position: fixed;
+    left: -9999px;
+    top: 0;
+}
+
+.assignment6-page #contactRegistrationForm[aria-busy="true"] {
+    cursor: progress;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .assignment6-page .spinner-border {
+        animation: none;
+    }
+}

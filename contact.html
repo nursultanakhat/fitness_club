@@ -8,9 +8,19 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/schedule-contact.css">
+    <!-- Task 0: CDN first, then the bundled copy if the CDN is unavailable. -->
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"
+            integrity="sha384-fgGyf7Mo7DURSOMnOy7ed+dkq5Job205Gnzu6QIg0BOHKaqt4D76Dt8VlDCzcMHV"
+            crossorigin="anonymous"></script>
+    <script>
+        if (!window.jQuery) {
+            document.write('<script src="js/vendor/jquery-4.0.0.min.js"><\/script>');
+        }
+    </script>
 </head>
 
-<body class="bg-dark text-white  extra-theme-page">
+<body class="bg-dark text-white extra-theme-page assignment6-page">
 
     <nav class="navbar navbar-expand-lg navbar-dark px-4 shadow-sm">
         <div class="container-fluid px-0">
@@ -171,18 +181,37 @@
 
                                 <p class="mb-3">
                                     <strong>Phone:</strong><br>
-                                    +7 700 123 45 67
+                                    <span id="clubPhone">+7 700 123 45 67</span>
+                                    <span class="a6-copy-wrap">
+                                        <button type="button" class="btn btn-sm btn-outline-primary a6-copy-button"
+                                                data-copy-target="clubPhone" aria-label="Copy phone"
+                                                aria-describedby="clubPhoneTooltip">
+                                            <span class="a6-copy-icon" aria-hidden="true">⧉</span>
+                                            <span class="a6-copy-label">Copy</span>
+                                        </button>
+                                        <span id="clubPhoneTooltip" class="a6-copy-tooltip" role="tooltip" hidden></span>
+                                    </span>
                                 </p>
 
                                 <p class="mb-3">
                                     <strong>Email:</strong><br>
-                                    info@atlasfitness.kz
+                                    <span id="clubEmail">info@atlasfitness.kz</span>
+                                    <span class="a6-copy-wrap">
+                                        <button type="button" class="btn btn-sm btn-outline-primary a6-copy-button"
+                                                data-copy-target="clubEmail" aria-label="Copy email"
+                                                aria-describedby="clubEmailTooltip">
+                                            <span class="a6-copy-icon" aria-hidden="true">⧉</span>
+                                            <span class="a6-copy-label">Copy</span>
+                                        </button>
+                                        <span id="clubEmailTooltip" class="a6-copy-tooltip" role="tooltip" hidden></span>
+                                    </span>
                                 </p>
 
                                 <p class="mb-0">
                                     <strong>Working Hours:</strong><br>
                                     Monday - Saturday, 08:00 - 22:00
                                 </p>
+                                <span id="contactCopyStatus" class="visually-hidden" role="status" aria-live="polite"></span>
 
                             </div>
 
@@ -389,6 +418,7 @@
 
                                         <button
                                             type="submit"
+                                            id="contactSubmit"
                                             class="btn btn-primary rounded-pill px-5"
                                         >
                                             Submit Registration
@@ -480,8 +510,8 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
     <script src="script.js"></script>
+    <script src="js/schedule-contact.js"></script>
 
 </body>
 </html>
