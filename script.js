@@ -711,4 +711,423 @@ $(document).ready(function() {
 
 });
 
-}); // Закрывает$(document).ready()
+}); 
+$(document).ready(function () {
+    const $root = $("html");
+    const $themeButton = $("#theme-toggle");
+    const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    function applyTheme(theme) {
+        $root.attr("data-bs-theme", theme);
+
+        const isDark = theme === "dark";
+
+        $("#theme-icon").text(isDark ? "☀" : "☾");
+        $("#theme-label").text(isDark ? "Light mode" : "Dark mode");
+
+        $themeButton.attr({
+            "aria-label": isDark
+                ? "Switch to light theme"
+                : "Switch to dark theme",
+            "aria-pressed": String(isDark)
+        });
+    }
+
+    let savedTheme;
+
+    try {
+        savedTheme = localStorage.getItem("atlas-theme");
+    } catch (error) {
+        savedTheme = null;
+    }
+
+    applyTheme(
+        savedTheme === "light" || savedTheme === "dark"
+            ? savedTheme
+            : $root.attr("data-bs-theme") === "light"
+                ? "light"
+                : "dark"
+    );
+
+    $themeButton.on("click.atlas", function () {
+        const theme =
+            $root.attr("data-bs-theme") === "dark" ? "light" : "dark";
+
+        applyTheme(theme);
+
+        try {
+            localStorage.setItem("atlas-theme", theme);
+        } catch (error) {
+        }
+    });
+
+    if (!$("body").is(".trainers-page, .pricing-page")) {
+        return;
+    }
+
+    function updateVisibleContent() {
+        const viewportTop = $(window).scrollTop();
+        const viewportBottom = viewportTop + $(window).height();
+
+        $(".fitness-counter").each(function () {
+            const $counter = $(this);
+            const counterTop = $counter.offset().top;
+            const counterBottom = counterTop + $counter.outerHeight();
+
+            if (
+                $counter.data("started") ||
+                counterTop >= viewportBottom ||
+                counterBottom <= viewportTop
+            ) {
+                return;
+            }
+
+            $counter.data("started", true);
+
+            const target = Number($counter.attr("data-target"));
+
+            $counter.text("0");
+
+            $({ value: 0 }).animate(
+                { value: target },
+                {
+                    duration: prefersReducedMotion ? 0 : 1800,
+                    easing: "swing",
+
+                    step: function () {
+                        $counter.text(
+                            Math.floor(this.value).toLocaleString("en-US")
+                        );
+                    },
+
+                    complete: function () {
+                        $counter.text(target.toLocaleString("en-US"));
+                    }
+                }
+            );
+        });
+
+        $(".fitness-lazy[data-src]").each(function () {
+            const $image = $(this);
+            const imageTop = $image.offset().top;
+            const imageBottom = imageTop + $image.outerHeight();
+
+            if (
+                imageTop < viewportBottom &&
+                imageBottom > viewportTop
+            ) {
+                const source = $image.attr("data-src");
+
+                $image.one("load", function () {
+                    $image.addClass("is-loaded");
+                });
+
+                $image.one("error", function () {
+                    $image
+                        .attr("alt", "Image unavailable")
+                        .addClass("is-loaded");
+                });
+
+                $image
+                    .removeAttr("data-src")
+                    .attr("src", source);
+            }
+        });
+    }
+
+    $(window).on(
+        "scroll.atlasContent resize.atlasContent",
+        updateVisibleContent
+    );
+
+    updateVisibleContent();
+
+    const $plan = $("#membershipPlan");
+    const $duration = $("#membershipDuration");
+    const $copyButton = $("#copyMembership");
+    const $copyFeedback = $("#copyFeedback");
+
+    let copyTimer;
+    let quoteVersion = 0;
+    let copying = false;
+
+    function resetCopyFeedback() {
+        clearTimeout(copyTimer);
+
+        $copyButton.find(".copy-icon").text("⧉");
+        $copyButton.find(".copy-label").text("Copy quote");
+
+        $copyFeedback
+            .removeClass("is-visible")
+            .text("");
+    }
+
+    function calculateMembership() {
+        if (!$plan.length) {
+            return;
+        }
+
+        quoteVersion++;
+        resetCopyFeedback();
+
+        const prices = {
+            monthly: 20000,
+            monthlyTrainer: 50000,
+            annual: 200000,
+            annualTrainer: 500000
+        };
+
+        const selectedPlan = $plan.val();
+        const duration = Number($duration.val());
+
+        const valid =
+            Object.prototype.hasOwnProperty.call(prices, selectedPlan) &&
+            Number.isInteger(duration) &&
+            duration >= 1 &&
+            duration <= 36;
+
+        $duration.attr("aria-invalid", String(!valid));
+        $copyButton.prop("disabled", !valid || copying);
+
+        if (!valid) {
+            $("#membershipTotal").text("Invalid Duration");
+
+            $("#membershipExplanation").text(
+                "Please enter a whole number from 1 to 36."
+            );
+
+            return;
+        }
+
+        const price = prices[selectedPlan];
+        const total = price * duration;
+
+        const period = selectedPlan.startsWith("annual")
+            ? "year"
+            : "month";
+
+        const periodLabel = duration === 1
+            ? period
+            : period + "s";
+
+        $("#membershipTotal").text(
+            "Total: " + total.toLocaleString("en-US") + " ₸"
+        );
+
+        $("#membershipExplanation").text(
+            duration + " " + periodLabel +
+            " × " + price.toLocaleString("en-US") + " ₸"
+        );
+    }
+
+    $plan.on("change.atlas", calculateMembership);
+    $duration.on("input.atlas", calculateMembership);
+
+    calculateMembership();
+
+    async function copyText(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return;
+        }
+
+        const previousFocus = document.activeElement;
+
+        const $temporaryField = $("<textarea>")
+            .val(text)
+            .attr("readonly", "")
+            .css({
+                position: "fixed",
+                left: "-9999px",
+                top: "0"
+            })
+            .appendTo("body");
+
+        try {
+            $temporaryField[0].select();
+
+            if (!document.execCommand("copy")) {
+                throw new Error("Copy failed");
+            }
+        } finally {
+            $temporaryField.remove();
+
+            if (previousFocus) {
+                previousFocus.focus();
+            }
+        }
+    }
+
+    $copyButton.on("click.atlas", async function () {
+        if (copying || $(this).prop("disabled")) {
+            return;
+        }
+
+        resetCopyFeedback();
+
+        const copiedVersion = quoteVersion;
+
+        const planName = $plan
+            .find("option:selected")
+            .text()
+            .trim()
+            .replace(/\s+/g, " ");
+
+        const quote = [
+            "Atlas Fitness Club",
+            planName,
+            $("#membershipExplanation").text(),
+            $("#membershipTotal").text()
+        ].join("\n");
+
+        copying = true;
+        $copyButton.prop("disabled", true);
+
+        try {
+            await copyText(quote);
+
+            if (copiedVersion === quoteVersion) {
+                $copyButton.find(".copy-icon").text("✓");
+                $copyButton.find(".copy-label").text("Copied");
+
+                $copyFeedback
+                    .text("Copied to clipboard!")
+                    .addClass("is-visible");
+            }
+        } catch (error) {
+            if (copiedVersion === quoteVersion) {
+                $copyFeedback
+                    .text("Copy unavailable. Please copy the quote manually.")
+                    .addClass("is-visible");
+            }
+        } finally {
+            copying = false;
+
+            $copyButton.prop(
+                "disabled",
+                $duration.attr("aria-invalid") === "true"
+            );
+
+            if (copiedVersion === quoteVersion) {
+                copyTimer = setTimeout(resetCopyFeedback, 3000);
+            }
+        }
+    });
+
+    const $modal = $("#trainerModal");
+    const $trainerForm = $("#trainerForm");
+    let bookingOpener = null;
+
+    function closeTrainerModal() {
+        $modal.hide().attr("aria-hidden", "true");
+        $("body").removeClass("booking-open");
+
+        if (bookingOpener) {
+            bookingOpener.focus();
+        }
+    }
+
+    $(".book-trainer").on("click.atlas", function () {
+        if (!$trainerForm.length) {
+            return;
+        }
+
+        bookingOpener = this;
+
+        $trainerForm[0].reset();
+
+        $("#selectedTrainer").val($(this).attr("data-trainer"));
+
+        $("#bookingMessage")
+            .text("")
+            .removeClass("text-success text-danger");
+
+        $modal
+            .css("display", "flex")
+            .attr("aria-hidden", "false");
+
+        $("body").addClass("booking-open");
+        $("#trainerName").trigger("focus");
+    });
+
+    $("#closeTrainerModal").on("click.atlas", closeTrainerModal);
+
+    $modal.on("click.atlas", function (event) {
+        if (event.target === this) {
+            closeTrainerModal();
+        }
+    });
+
+    $(document).on("keydown.atlasBooking", function (event) {
+        if (!$modal.is(":visible")) {
+            return;
+        }
+
+        if (event.key === "Escape") {
+            closeTrainerModal();
+            return;
+        }
+
+        if (event.key !== "Tab") {
+            return;
+        }
+
+        const $fields = $modal
+            .find("button, input, textarea, select, a[href]")
+            .filter(":visible")
+            .filter(":enabled");
+
+        const firstField = $fields[0];
+        const lastField = $fields[$fields.length - 1];
+
+        if (event.shiftKey && document.activeElement === firstField) {
+            event.preventDefault();
+            lastField.focus();
+        } else if (
+            !event.shiftKey &&
+            document.activeElement === lastField
+        ) {
+            event.preventDefault();
+            firstField.focus();
+        }
+    });
+
+    $trainerForm.on("submit.atlas", function (event) {
+        event.preventDefault();
+
+        const name = $("#trainerName").val().trim();
+        const email = $("#trainerEmail").val().trim();
+        const trainer = $("#selectedTrainer").val();
+        const $message = $("#bookingMessage");
+
+        $message.removeClass("text-success text-danger");
+
+        if (name.length < 2) {
+            $message
+                .addClass("text-danger")
+                .text("Please enter your full name.");
+
+            $("#trainerName").trigger("focus");
+            return;
+        }
+
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            $message
+                .addClass("text-danger")
+                .text("Please enter a valid email address.");
+
+            $("#trainerEmail").trigger("focus");
+            return;
+        }
+
+        $message
+            .addClass("text-success")
+            .text(
+                "Demo: booking details validated for " +
+                trainer +
+                ". No booking has been sent."
+            );
+    });
+});
