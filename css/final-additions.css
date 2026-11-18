@@ -1,0 +1,30 @@
+/* Small functional additions: preserve the existing palette, typography and cards. */
+[hidden] { display: none !important; }
+.account-panel { max-width: 720px; margin-inline: auto; }
+.account-panel .form-label { font-weight: 600; }
+#memberProfile dd, #weatherSummary, #profileBookings { overflow-wrap: anywhere; }
+#popup-overlay { padding: 1rem; overflow-y: auto; }
+#popup-overlay .theme-dialog { max-height: calc(100dvh - 2rem); overflow-y: auto; }
+.theme-dialog .invalid-feedback { font-size: .875rem; }
+/* Bootstrap's dark header stays readable even when the page defaults to light. */
+.navbar { --bs-navbar-toggler-border-color: rgba(255,255,255,.55); }
+.navbar .navbar-toggler-icon { filter: none; }
+.navbar-toggler { border-color: rgba(255,255,255,.55); }
+@media (min-width: 1200px) {
+    .navbar-nav { flex-wrap: wrap; justify-content: flex-end; }
+    .datetime-box { flex-shrink: 0; }
+}
+@media (max-width: 1199.98px) {
+    .navbar-collapse { background: #142b33 !important; border-radius: .5rem; padding: .75rem; }
+    #current-datetime { display: none !important; }
+}
+@media (max-width: 575.98px) {
+    .theme-content.p-5, .theme-dialog.p-5 { padding: 1.25rem !important; }
+    #main-title + p + .d-flex { flex-wrap: wrap; }
+    .theme-content .d-flex.gap-3, .theme-content .d-flex.gap-2 { flex-wrap: wrap; }
+    .navbar-brand { font-size: 1.05rem; white-space: normal; }
+    .account-panel { padding: 1.25rem !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | Atlas Fitness Club</title>
+
+    <link href="vendor/bootstrap-5.3.3/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/final-additions.css">
+    <script src="js/theme-init.js"></script>
+    
+    <!-- Task 0: CDN first, then the bundled copy if the CDN is unavailable. -->
+    <script src="js/vendor/jquery-4.0.0.min.js"></script>
+</head>
+
+<body class="bg-dark text-white extra-theme-page account-page">
+
+    <nav class="navbar navbar-expand-xl navbar-dark px-4 shadow-sm">
+        <div class="container-fluid px-0">
+
+            <a class="navbar-brand fw-bold text-white" href="index.html">
+                Atlas Fitness Club
+            </a>
+
+            <div id="current-datetime" class="datetime-box text-light small ms-3 d-none d-lg-block">
+                Loading date and time...
+            </div>
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#accountNavbar"
+                aria-controls="accountNavbar"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="accountNavbar">
+                <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link text-white px-3" href="login.html" data-account-link>Log In</a></li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white px-3" href="index.html">
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white px-3" href="services.html">
+                            Services
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white px-3" href="trainers.html">
+                            Trainers
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white px-3" href="pricing.html">
+                            Pricing
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white px-3" href="schedule.html">
+                            Schedule
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white px-3" href="contact.html">
+                            Contact
+                        </a>
+                    </li>
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                        <button
+                            type="button"
+                            id="theme-toggle"
+                            class="btn btn-outline-light"
+                            aria-label="Switch to dark theme"
+                            aria-pressed="false"
+    >
+                            <span id="theme-icon" aria-hidden="true">☾</span>
+                            <span id="theme-label">Dark mode</span>
+                        </button>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <main class="container-fluid my-5 px-3">
+        <div class="row align-items-start">
+                        <aside class="col-lg-2 text-white mb-4 mb-lg-0 px-2">
+                <div class="quick-info-box">
+
+                    <h2 class="fw-bold mb-4 text-white fs-4">
+                        Quick Info
+                    </h2>
+
+                    <div class="mb-3">
+                        <h3 class="h6 fw-bold text-info">
+                            Working Hours
+                        </h3>
+
+                        <p class="text-light small mb-0">
+                            Mon - Sat<br>
+                            08:00 - 22:00
+                        </p>
+                    </div>
+
+                    <div class="mb-3">
+                        <h3 class="h6 fw-bold text-info">
+                            Location
+                        </h3>
+
+                        <p class="text-light small mb-0">
+                            Astana, Kazakhstan
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="h6 fw-bold text-info">
+                            Contact
+                        </h3>
+
+                        <p class="text-light small mb-0">
+                            +7 700 123 45 67<br>
+                            info@atlasfitness.kz
+                        </p>
+                    </div>
+
+                </div>
+            </aside>
+
+
+            <div class="col-lg-10 px-2">
+                <div class="theme-content account-panel bg-white text-dark rounded-4 shadow p-4 p-md-5">
+                    
+    <div id="profileStatus" role="status" aria-live="polite" hidden></div>
+    <section id="memberProfile" hidden>
+        <h1 class="h2 fw-bold mb-3">My Profile</h1>
+        <p class="text-secondary">Your Atlas Fitness member details on this device.</p>
+        <dl class="row mt-4">
+            <dt class="col-sm-4">Full name</dt><dd class="col-sm-8" id="profileName"></dd>
+            <dt class="col-sm-4">Email</dt><dd class="col-sm-8" id="profileEmail"></dd>
+            <dt class="col-sm-4">Phone</dt><dd class="col-sm-8" id="profilePhone"></dd>
+        </dl>
+        <div class="d-flex gap-3 flex-wrap my-4">
+            <a href="schedule.html" class="btn btn-primary rounded-pill px-4">Find a Class</a>
+            <a href="contact.html" class="btn btn-outline-primary rounded-pill px-4">Request Training</a>
+            <button type="button" id="logoutButton" class="btn btn-outline-secondary rounded-pill px-4">Log Out</button>
+        </div>
+        <h2 class="h4 fw-bold mt-5">My Demo Training Requests</h2>
+        <p class="text-secondary small">Requests made with your account email appear here. These are local demonstrations; the club does not receive them.</p>
+        <p id="noBookings" class="text-secondary">No saved requests yet. Try the Contact or Trainers form using your account email.</p>
+        <ul id="profileBookings" class="list-group"></ul>
+    </section>
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="text-center py-4 text-white">
+
+        <p class="mb-0">
+            Development Team:
+            Nursultan Akhat,
+            Abdugani Nagashbay,
+            Tanat Azamat
+        </p>
+
+    </footer>
+
+    <script src="vendor/bootstrap-5.3.3/bootstrap.bundle.min.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="script.js"></script>
+    <script src="js/forms.js"></script>
+    <script src="js/auth.js"></script>
+
+</body>
+</html>

@@ -106,8 +106,7 @@
             function validateDetails() {
                 const nameValid = validateField('#contactFullName', $('#contactFullName').val().trim().length >= 2);
                 const emailValid = validateField('#contactEmail', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($('#contactEmail').val().trim()));
-                const digits = $('#contactPhone').val().replace(/\D/g, '');
-                const phoneValid = validateField('#contactPhone', digits.length >= 10 && digits.length <= 15);
+                const phoneValid = validateField('#contactPhone', AtlasValidation.phone($('#contactPhone').val()));
                 return nameValid && emailValid && phoneValid;
             }
 
@@ -161,6 +160,15 @@
                     return;
                 }
 
+                try {
+                    AtlasValidation.saveBooking({
+                        name: $('#contactFullName').val().trim(), email: $('#contactEmail').val().trim(),
+                        phone: $('#contactPhone').val().trim(), training: $('#contactTraining').val()
+                    });
+                } catch (error) {
+                    $message.attr('class', 'alert alert-danger mt-3').text(error.message);
+                    return;
+                }
                 busy = true;
                 controlStates = $form.find('input, select, textarea, button').toArray().map(function (element) {
                     const state = { element: element, disabled: element.disabled };
@@ -175,7 +183,7 @@
                 pendingTimer = setTimeout(function () {
                     $form[0].reset();
                     $message.attr('class', 'alert alert-success mt-3')
-                        .text('Demo registration completed successfully. No registration has been sent.');
+                        .text('Demo training request saved on this device. No registration has been sent.');
                 }, 1500);
             });
 

@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atlas Fitness Club</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap-5.3.0/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/final-additions.css">
+    <script src="js/theme-init.js"></script>
 </head>
 <body class="bg-dark text-white  extra-theme-page">
     <!-- Scroll Progress Bar -->
@@ -13,7 +15,7 @@
     <div id="scroll-progress-bar" style="height: 100%; width: 0%; background: linear-gradient(90deg, #3182ce, #00d2ff); transition: width 0.1s ease-out;"></div>
 </div>
 
-    <nav class="navbar navbar-expand-lg navbar-dark px-4 shadow-sm" style="background-color: transparent !important;">
+    <nav class="navbar navbar-expand-xl navbar-dark px-4 shadow-sm" style="background-color: transparent !important;">
         <div class="container-fluid px-0">
             <a class="navbar-brand fw-bold text-white" href="index.html">Atlas Fitness Club</a>
             
@@ -24,6 +26,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link text-white px-3" href="login.html" data-account-link>Log In</a></li>
                     <li class="nav-item"><a class="nav-link text-white px-3" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link text-white px-3" href="services.html">Services</a></li>
                     <li class="nav-item"><a class="nav-link text-white px-3" href="trainers.html">Trainers</a></li>
@@ -73,7 +76,7 @@
                         <p id="subtitle" class="text-secondary fs-5 mb-4">A modern space to achieve your sports and lifestyle goals.</p>
                         
                         <div class="d-flex justify-content-center gap-3">
-                            <a href="services.html" class="btn btn-primary btn-lg rounded-pill px-5">Join Now</a>
+                            <a href="signup.html" class="btn btn-primary btn-lg rounded-pill px-5">Join Now</a>
                             <button id="change-bg-btn" class="btn btn-outline-secondary btn-lg rounded-pill px-4">Change Theme Color</button>
                         </div>
                     </div>
@@ -121,7 +124,7 @@
                         <div class="p-3 bg-light rounded-3">
                             <h3 class="h5 fw-bold text-dark mb-2">Time Greeting </h3>
                             <p id="switch-greeting" class="text-secondary mb-2">Loading greeting...</p>
-                            <button id="sound-btn" class="btn btn-sm btn-outline-primary rounded-pill px-3">Play Notification Sound 🎵</button>
+                            <button id="sound-btn" class="btn btn-sm btn-outline-primary rounded-pill px-3">Play Notification Sound 🎵</button><span id="sound-status" class="d-block small mt-2" role="status"></span>
                         </div>
                     </section>
 
@@ -143,7 +146,7 @@
                                     What membership plans do you offer? ▼
                                 </div>
                                 <div class="accordion-content" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
-                                    <div class="p-3 text-secondary">We offer monthly, semi-annual, and annual passes, including unlimited gym access and group classes.</div>
+                                    <div class="p-3 text-secondary">We offer monthly and annual passes, including unlimited gym access and group classes.</div>
                                 </div>
                             </div>
 
@@ -160,8 +163,11 @@
         <p class="mb-0">Development Team: Nursultan Akhat, Abdugani Nagashbay, Tanat Azamat</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script src="vendor/bootstrap-5.3.0/bootstrap.bundle.min.js"></script>
+    <script src="js/vendor/jquery-4.0.0.min.js"></script>
+    <script src="js/validation.js"></script>
     <script src="script.js"></script>
+    <script src="js/forms.js"></script>
+    <script src="js/auth.js"></script>
 </body>
 </html>

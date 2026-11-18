@@ -6,23 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schedule - Atlas Fitness Club</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap-5.3.3/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/final-additions.css">
+    <script src="js/theme-init.js"></script>
     <link rel="stylesheet" href="css/schedule-contact.css">
     <!-- Task 0: CDN first, then the bundled copy if the CDN is unavailable. -->
-    <script src="https://code.jquery.com/jquery-4.0.0.min.js"
-            integrity="sha384-fgGyf7Mo7DURSOMnOy7ed+dkq5Job205Gnzu6QIg0BOHKaqt4D76Dt8VlDCzcMHV"
-            crossorigin="anonymous"></script>
-    <script>
-        if (!window.jQuery) {
-            document.write('<script src="js/vendor/jquery-4.0.0.min.js"><\/script>');
-        }
-    </script>
+    <script src="js/vendor/jquery-4.0.0.min.js"></script>
 </head>
 
 <body class="bg-dark text-white extra-theme-page assignment6-page">
 
-    <nav class="navbar navbar-expand-lg navbar-dark px-4 shadow-sm">
+    <nav class="navbar navbar-expand-xl navbar-dark px-4 shadow-sm">
         <div class="container-fluid px-0">
 
             <a class="navbar-brand fw-bold text-white" href="index.html">
@@ -47,6 +42,7 @@
 
             <div class="collapse navbar-collapse" id="scheduleNavbar">
                 <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link text-white px-3" href="login.html" data-account-link>Log In</a></li>
 
                     <li class="nav-item">
                         <a class="nav-link text-white px-3" href="index.html">
@@ -150,6 +146,20 @@
 
             <div class="col-lg-10 px-2">
                 <div class="theme-content bg-white text-dark rounded-4 shadow p-4 p-md-5">
+
+
+                    <section class="mb-5 p-4 border border-primary rounded-4 shadow-sm" aria-labelledby="weatherTitle" id="weatherPanel">
+                        <h2 id="weatherTitle" class="h4 fw-bold">Plan an Outdoor Workout</h2>
+                        <p class="text-secondary">Current weather in Astana, alongside your indoor class schedule.</p>
+                        <p id="weatherStatus" role="status" aria-live="polite">Loading Astana weather...</p>
+                        <div id="weatherDetails" hidden>
+                            <p class="fs-5 fw-semibold mb-2" id="weatherSummary"></p>
+                            <p class="text-secondary" id="weatherTime"></p>
+                            <p id="weatherAdvice"></p>
+                        </div>
+                        <button type="button" id="weatherRefresh" class="btn btn-outline-primary">Refresh weather</button>
+                        <p class="small text-secondary mt-3 mb-0">Weather data: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>. Weather information is provided for planning.</p>
+                    </section>
 
                     <section class="mb-5 text-center">
 
@@ -477,9 +487,13 @@
 
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/bootstrap-5.3.3/bootstrap.bundle.min.js"></script>
+    <script src="js/validation.js"></script>
     <script src="script.js"></script>
+    <script src="js/forms.js"></script>
+    <script src="js/auth.js"></script>
     <script src="js/schedule-contact.js"></script>
+    <script src="js/weather.js"></script>
 
 </body>
 </html>

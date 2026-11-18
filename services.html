@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atlas Fitness Club - Services</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap-5.3.0/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/final-additions.css">
+    <script src="js/theme-init.js"></script>
 </head>
 <body class="bg-dark text-white  extra-theme-page">
     <!-- Scroll Progress Bar -->
@@ -13,7 +15,7 @@
     <div id="scroll-progress-bar" style="height: 100%; width: 0%; background: linear-gradient(90deg, #3182ce, #00d2ff); transition: width 0.1s ease-out;"></div>
 </div>
 
-    <nav class="navbar navbar-expand-lg navbar-dark px-4 shadow-sm" style="background-color: transparent !important;">
+    <nav class="navbar navbar-expand-xl navbar-dark px-4 shadow-sm" style="background-color: transparent !important;">
         <div class="container-fluid px-0">
             <a class="navbar-brand fw-bold text-white" href="index.html">Atlas Fitness Club</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -22,6 +24,7 @@
             
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link text-white px-3" href="login.html" data-account-link>Log In</a></li>
                     <li class="nav-item"><a class="nav-link text-white px-3" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link text-white px-3 active" href="services.html">Services</a></li>
                     <li class="nav-item"><a class="nav-link text-white px-3" href="trainers.html">Trainers</a></li>
@@ -191,12 +194,12 @@
     </div>
 
     <!-- Popup-окно -->
-    <div id="popup-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1050; justify-content: center; align-items: center;">
+    <div role="dialog" aria-modal="true" aria-label="Book your training" id="popup-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1050; justify-content: center; align-items: center;">
         <div class="theme-dialog bg-white p-5 rounded-4 shadow-lg position-relative" style="width: 100%; max-width: 500px; color: #0f172a;">
             <button id="close-popup-btn" class="btn-close position-absolute top-0 end-0 m-4" aria-label="Close"></button>
             
             <h3 class="fw-bold mb-3 text-center">Book Your Training</h3>
-            <p class="text-secondary small text-center mb-4">Fill out the form below to reserve your spot.</p>
+            <p class="text-secondary small text-center mb-4">Enter your details to try a training booking.</p>
             
             <form id="booking-form" novalidate>
                 <div class="mb-3">
@@ -207,23 +210,18 @@
 
                 <div class="mb-3">
                     <label for="email" class="form-label fw-bold small">Email address</label>
-                    <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                    <input type="text" inputmode="email" class="form-control" id="email" placeholder="name@example.com">
                     <div class="invalid-feedback" id="email-error">Please enter a valid email format.</div>
                 </div>
 
-                <div class="mb-3">
-                    <label for="password" class="form-label fw-bold small">Password (min 6 characters)</label>
-                    <input type="password" class="form-control" id="password" placeholder="Create a password">
-                    <div class="invalid-feedback" id="password-error">Password must be at least 6 characters long.</div>
+<div class="mb-3">
+                    <label for="bookingPhone" class="form-label fw-bold small">Phone number</label>
+                    <input type="tel" class="form-control" id="bookingPhone" autocomplete="tel" placeholder="+7 700 123 45 67">
+                    <div class="invalid-feedback" id="bookingPhone-error"></div>
                 </div>
-
-                 <div class="mb-3">
-                    <label for="confirmPassword" class="form-label fw-bold small">Confirm Password</label>
-                    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password">
-                    <div class="invalid-feedback" id="confirm-error">Passwords do not match.</div>
-                </div>
-
-<button type="submit" id="submit-btn" class="btn btn-primary w-100 py-2 fw-bold">Submit Booking</button>            </form>
+                <p class="text-secondary small">Demo booking only. No request is sent to the club. <a href="signup.html">Create an account</a> to use a member profile.</p>
+                <p id="bookingFormStatus" role="status" aria-live="polite"></p>
+                <button type="submit" id="submit-btn" class="btn btn-primary w-100 py-2 fw-bold">Submit Booking</button>            </form>
         </div>
     </div>
 
@@ -237,16 +235,19 @@
         <div class="toast-header bg-success text-white border-0">
             <strong class="me-auto">Atlas Fitness</strong>
             <small>Just now</small>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close" onclick="$('#custom-toast').fadeOut();"></button>
+            <button type="button" class="btn-close btn-close-white" aria-label="Close" onclick="$('#custom-toast').fadeOut();"></button>
         </div>
         <div class="toast-body fw-semibold" id="toast-message-text">
-            Success! Your booking has been submitted.
+            Demo booking saved on this device. No booking has been sent.
         </div>
     </div>
 </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script src="vendor/bootstrap-5.3.0/bootstrap.bundle.min.js"></script>
+    <script src="js/vendor/jquery-4.0.0.min.js"></script>
+    <script src="js/validation.js"></script>
     <script src="script.js"></script>
+    <script src="js/forms.js"></script>
+    <script src="js/auth.js"></script>
 </body>
 </html>

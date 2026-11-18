@@ -16,17 +16,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const colorBtn = document.getElementById('change-bg-btn');
     if (colorBtn) {
         const bgColors = [
-            '#ff5733', 
-            '#33ff57', 
-            '#3357ff', 
-            '#f333ff', 
-            '#ffff33'  
+            '#183846', 
+            '#173f36', 
+            '#1d3151', 
+            '#372942', 
+            '#0f2027'  
         ];
         let colorIndex = 0;
         
         colorBtn.addEventListener('click', function() {
             colorIndex = (colorIndex + 1) % bgColors.length;
-            document.body.style.setProperty('background', bgColors[colorIndex], 'important');
+            document.body.style.setProperty('background', 'linear-gradient(135deg, ' + bgColors[colorIndex] + ', #203a43, #2c5364)', 'important');
         });
     }
 
@@ -70,196 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // TASK 1 & TASK 6: Form Validation & Loading Spinner
-    const bookingForm = document.getElementById('booking-form');
-    if (bookingForm) {
-        bookingForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            let isValid = true;
-            
-            const fullNameInput = document.getElementById('fullName');
-            const namePattern = /^[A-Za-zА-Яа-яЁё\s]+$/; 
-            if (fullNameInput.value.trim() === '' || !namePattern.test(fullNameInput.value.trim()) || fullNameInput.value.trim().length < 2) {
-                fullNameInput.classList.add('is-invalid');
-                isValid = false;
-            } else {
-                fullNameInput.classList.remove('is-invalid');
-                fullNameInput.classList.add('is-valid');
-            }
-            
-            const emailInput = document.getElementById('email');
-            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            
-            if (!emailPattern.test(emailInput.value.trim())) {
-                emailInput.classList.add('is-invalid');
-                isValid = false;
-            } 
-            else {
-                emailInput.classList.remove('is-invalid');
-                emailInput.classList.add('is-valid');
-            }
-
-            const passwordInput = document.getElementById('password');
-            if (passwordInput.value.length < 6) {
-                passwordInput.classList.add('is-invalid');
-                isValid = false;
-            } else {
-                passwordInput.classList.remove('is-invalid');
-                passwordInput.classList.add('is-valid');
-            }
-
-            const confirmPasswordInput = document.getElementById('confirmPassword');
-            if (confirmPasswordInput.value !== passwordInput.value || confirmPasswordInput.value === '') {
-                confirmPasswordInput.classList.add('is-invalid');
-                isValid = false;
-            } else {
-                confirmPasswordInput.classList.remove('is-invalid');
-                confirmPasswordInput.classList.add('is-valid');
-            }
-
-            if (isValid) {
-                const $btn = $('#submit-btn');
-                
-                if ($btn.length > 0) {
-                    $btn.prop('disabled', true);
-                    $btn.html(`
-                        <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                        Please wait...
-                    `);
-                }
-
-                setTimeout(function() {
-                    showToast('Success! Your form has been successfully validated and submitted.');
-                    
-                    bookingForm.reset();
-                    
-                    fullNameInput.classList.remove('is-valid');
-                    emailInput.classList.remove('is-valid');
-                    passwordInput.classList.remove('is-valid');
-                    confirmPasswordInput.classList.remove('is-valid');
-                    
-                    if ($btn.length > 0) {
-                        $btn.prop('disabled', false);
-                        $btn.html('Submit Booking');
-                    }
-                    
-                    if (popupOverlay) {
-                        popupOverlay.style.display = 'none';
-                    }
-                }, 1500);
-            }
-        });
-    }
-
-// Trainer Booking Modal Logic
-document.addEventListener('DOMContentLoaded', function() {
-    const modal = document.getElementById('trainerModal');
-    const closeButton = document.getElementById('closeTrainerModal');
-    const trainerInput = document.getElementById('selectedTrainer');
-    const trainerForm = document.getElementById('trainerForm');
-    const bookingMessage = document.getElementById('bookingMessage');
-
-    if (modal && closeButton && trainerInput && trainerForm && bookingMessage) {
-        const bookButtons = document.querySelectorAll('.book-trainer');
-        bookButtons.forEach(function(button) {
-            button.addEventListener('click', function() {
-                trainerForm.reset();
-                trainerInput.value = button.dataset.trainer;
-                bookingMessage.textContent = '';
-                modal.style.display = 'flex';
-                modal.setAttribute('aria-hidden', 'false');
-                document.getElementById('trainerName').focus();
-            });
-        });
-
-        function closeModal() {
-            modal.style.display = 'none';
-            modal.setAttribute('aria-hidden', 'true');
-        }
-
-        closeButton.addEventListener('click', closeModal);
-        modal.addEventListener('click', function(event) {
-            if (event.target === modal) {
-                closeModal();
-            }
-        });
-
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape' && modal.style.display === 'flex') {
-                closeModal();
-            }
-        });
-
-        trainerForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            const name = document.getElementById('trainerName').value.trim();
-            const email = document.getElementById('trainerEmail').value.trim();
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            if (name === '') {
-                bookingMessage.textContent = 'Please enter your full name.';
-                bookingMessage.style.color = 'red';
-                return;
-            }
-
-            if (!emailPattern.test(email)) {
-                bookingMessage.textContent = 'Please enter a valid email address.';
-                bookingMessage.style.color = 'red';
-                return;
-            }
-
-            const selectedTrainerName = trainerInput.value;
-            trainerForm.reset();
-            trainerInput.value = selectedTrainerName;
-            bookingMessage.textContent = 'Form validated successfully for ' + selectedTrainerName + '.';
-            bookingMessage.style.color = 'green';
-        });
-    }
-});
-
-// Membership Calculator Logic
-document.addEventListener('DOMContentLoaded', function() {
-    const membershipPlan = document.getElementById('membershipPlan');
-    const membershipDuration = document.getElementById('membershipDuration');
-    const membershipTotal = document.getElementById('membershipTotal');
-    const membershipExplanation = document.getElementById('membershipExplanation');
-
-    if (membershipPlan && membershipDuration && membershipTotal && membershipExplanation) {
-        const prices = {
-            monthly: 20000,
-            monthlyTrainer: 50000,
-            annual: 200000,
-            annualTrainer: 500000,
-
-            calculateTotal(plan, duration) {
-                return this[plan] * duration;
-            }
-        };
-
-        function calculateMembership() {
-            const selectedPlan = membershipPlan.value;
-            const duration = Number(membershipDuration.value);
-
-            if (membershipDuration.value.trim() === '' || !Number.isInteger(duration) || duration < 1 || duration > 36) {
-                membershipTotal.textContent = 'Invalid Duration';
-                membershipExplanation.textContent = 'Please enter a whole number from 1 to 36.';
-                return;
-            }
-
-            const price = prices[selectedPlan];
-            const total = prices.calculateTotal(selectedPlan, duration);
-            const period = selectedPlan.startsWith('annual') ? 'year' : 'month';
-            const periodLabel = duration === 1 ? period : period + 's';
-
-            membershipTotal.textContent = 'Total: ' + total.toLocaleString('en-US') + ' ₸';
-            membershipExplanation.textContent = duration + ' ' + periodLabel + ' × ' + price.toLocaleString('en-US') + ' ₸';
-        }
-
-        membershipPlan.addEventListener('change', calculateMembership);
-        membershipDuration.addEventListener('input', calculateMembership);
-        calculateMembership();
-    }
 });
 
 // Schedule/contact initialization moved to js/schedule-contact.js (pages 5 and 6 only).
@@ -340,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } catch (err) {
                 console.log('Audio context error:', err);
             }
-            alert('🎵 Sound effect played successfully via Web Audio API!');
+            document.getElementById('sound-status').textContent = 'Notification sound played.';
         });
     }
 
@@ -423,7 +233,7 @@ $(document).ready(function() {
     }
 
     // --- Task 1, Task 2 & Task 3: Поиск, автоподсказки и подсветка ---
-    $('#searchInput').on('keyup', function() {
+    $('#searchInput').on('input', function() {
         let keyword = $(this).val().trim();
         let $suggestionsBox = $('#suggestions');
         
@@ -441,27 +251,29 @@ $(document).ready(function() {
             $suggestionsBox.hide();
         }
 
-        // Убираем старую подсветку
-        $('.service-card mark').each(function() {
-            $(this).replaceWith($(this).text());
+        $('.service-card h3, .service-card p').each(function () {
+            const text = $(this).data('originalText') || this.textContent;
+            $(this).data('originalText', text);
+            this.replaceChildren();
+            const lower = text.toLowerCase();
+            const query = keyword.toLowerCase();
+            let position = 0;
+            let match = query ? lower.indexOf(query) : -1;
+            while (match !== -1) {
+                this.append(document.createTextNode(text.slice(position, match)));
+                const mark = document.createElement('mark');
+                mark.textContent = text.slice(match, match + query.length);
+                this.append(mark);
+                position = match + query.length;
+                match = lower.indexOf(query, position);
+            }
+            this.append(document.createTextNode(text.slice(position)));
         });
-
-        // Подсвечиваем найденный текст (Task 3)
-        if (keyword.length > 0) {
-            let regex = new RegExp('(' + keyword + ')', 'gi');
-            $('.service-card h3, .service-card p').each(function() {
-                let html = $(this).html();
-                if (!html.includes('mark')) {
-                    let newHtml = html.replace(regex, '<mark style="background-color: #ffeb3b; padding: 0 2px; border-radius: 2px;">$1</mark>');
-                    $(this).html(newHtml);
-                }
-            });
-        }
     });
 
     // Клик по автоподсказке
     $(document).on('click', '.suggestion-item', function() {
-        $('#searchInput').val($(this).text()).trigger('keyup');
+        $('#searchInput').val($(this).text()).trigger('input');
         $('#suggestions').hide();
     });
 
@@ -472,91 +284,6 @@ $(document).ready(function() {
         let scrollPercent = (sTop / docHeight) * 100;
         $('#scroll-progress-bar').css('width', scrollPercent + '%');
     });
-
-    // --- Task 6 & Task 7: Валидация формы, спиннер загрузки и уведомление ---
-    const bookingForm = document.getElementById('booking-form');
-    if (bookingForm) {
-        bookingForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            let isValid = true;
-            
-            const fullNameInput = document.getElementById('fullName');
-            const namePattern = /^[A-Za-zА-Яа-яЁё\s]+$/; 
-            if (fullNameInput.value.trim() === '' || !namePattern.test(fullNameInput.value.trim()) || fullNameInput.value.trim().length < 2) {
-                fullNameInput.classList.add('is-invalid');
-                isValid = false;
-            } else {
-                fullNameInput.classList.remove('is-invalid');
-                fullNameInput.classList.add('is-valid');
-            }
-            
-            const emailInput = document.getElementById('email');
-            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            if (!emailPattern.test(emailInput.value.trim())) {
-                emailInput.classList.add('is-invalid');
-                isValid = false;
-            } else {
-                emailInput.classList.remove('is-invalid');
-                emailInput.classList.add('is-valid');
-            }
-
-            const passwordInput = document.getElementById('password');
-            if (passwordInput.value.length < 6) {
-                passwordInput.classList.add('is-invalid');
-                isValid = false;
-            } else {
-                passwordInput.classList.remove('is-invalid');
-                passwordInput.classList.add('is-valid');
-            }
-
-            const confirmPasswordInput = document.getElementById('confirmPassword');
-            if (confirmPasswordInput.value !== passwordInput.value || confirmPasswordInput.value === '') {
-                confirmPasswordInput.classList.add('is-invalid');
-                isValid = false;
-            } else {
-                confirmPasswordInput.classList.remove('is-invalid');
-                confirmPasswordInput.classList.add('is-valid');
-            }
-
-            // Если всё валидно — запускаем анимацию и тост
-            if (isValid) {
-                const $btn = $('#submit-btn');
-                
-                if ($btn.length > 0) {
-                    $btn.prop('disabled', true);
-                    $btn.html(`
-                        <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                        Please wait...
-                    `);
-                }
-
-                setTimeout(function() {
-                    // Вызываем наше красивое уведомление (Task 7)
-                    showToast('Success! Your form has been successfully validated and submitted.');
-                    
-                    bookingForm.reset();
-                    
-                    fullNameInput.classList.remove('is-valid');
-                    emailInput.classList.remove('is-valid');
-                    passwordInput.classList.remove('is-valid');
-                    confirmPasswordInput.classList.remove('is-valid');
-                    
-                    if ($btn.length > 0) {
-                        $btn.prop('disabled', false);
-                        $btn.html('Submit Booking');
-                    }
-                    
-                    const popupOverlay = document.getElementById('popup-overlay'); // или ваш класс оверлея
-                    if (popupOverlay) {
-                        popupOverlay.style.display = 'none';
-                    }
-                }, 1500);
-            }
-        });
-    }
-
-});
 
 }); 
 $(document).ready(function () {
@@ -941,40 +668,4 @@ $(document).ready(function () {
         }
     });
 
-    $trainerForm.on("submit.atlas", function (event) {
-        event.preventDefault();
-
-        const name = $("#trainerName").val().trim();
-        const email = $("#trainerEmail").val().trim();
-        const trainer = $("#selectedTrainer").val();
-        const $message = $("#bookingMessage");
-
-        $message.removeClass("text-success text-danger");
-
-        if (name.length < 2) {
-            $message
-                .addClass("text-danger")
-                .text("Please enter your full name.");
-
-            $("#trainerName").trigger("focus");
-            return;
-        }
-
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            $message
-                .addClass("text-danger")
-                .text("Please enter a valid email address.");
-
-            $("#trainerEmail").trigger("focus");
-            return;
-        }
-
-        $message
-            .addClass("text-success")
-            .text(
-                "Demo: booking details validated for " +
-                trainer +
-                ". No booking has been sent."
-            );
-    });
 });
