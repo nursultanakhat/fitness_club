@@ -251,7 +251,7 @@ $(document).ready(function() {
             $suggestionsBox.hide();
         }
 
-        $('.service-card h3, .service-card p').each(function () {
+        $('.service-card h3, .service-card p, .service-card .fw-bold.small').each(function () {
             const text = $(this).data('originalText') || this.textContent;
             $(this).data('originalText', text);
             this.replaceChildren();
